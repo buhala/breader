@@ -1,0 +1,87 @@
+/* 
+    Document   : style
+    Created on : Jun 15, 2013, 7:45:29 PM
+    Author     : buhala
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+body{
+
+    font-family:'Segoe UI','Helvetica','Arial',sans-serif;
+    background:url('../img/bg.png');
+}
+h1{
+    text-align: center;
+    font-weight: normal;
+}
+#content{
+    padding: 5px ;
+    background:#222222;
+    max-width:600px;
+    margin:0 auto;
+    margin-top:10%;
+    border-bottom: 3px solid #FF7F00;
+    color: #fff
+}
+.input {
+    display: block;
+    padding: 10px 4px;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom:2px;
+    border: 0;
+    background: #474747;
+    color: #F6F6F6;
+}
+.input:hover {
+    background: #606060;
+}
+.input:focus {
+    background: #ebebeb;
+    color: #000;
+}
+.button{
+    margin: 0 auto;
+    margin-bottom:20px;
+    padding:10px 35px;
+    text-align: center;
+    background-color:#474747;
+    border:0;
+    color:#F6F6F6;
+    border-top:2px solid #FF7F00;
+    font-size: 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+.button:hover {
+    background: #606060;
+}
+.actions {
+    margin-top: 20px;
+    text-align: center;
+
+}
+a {
+    text-decoration: none;
+    color:inherit;
+}
+a:hover{
+    text-decoration: underline;
+}
+.checkbox{
+    text-align: left;
+}
+.addons {
+    margin: 0 90px;
+    text-align: 12px;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}

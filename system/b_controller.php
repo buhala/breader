@@ -1,0 +1,37 @@
+<?php
+class b_controller{
+    /**
+    *Loads a model
+    **/
+    public function __construct() {
+        foreach ($GLOBALS['libraries'] as $key => $value) {
+            $this->$key=$value;
+        }
+    }
+    public function loadModel($model){
+        include PROJECT_DIR.'models/'.$model.'.php';	
+        $this->$model=new $model;
+		
+        
+    }
+    /**
+    *Loads a library
+    **/
+    public function loadLibrary($lib){
+        include PROJECT_DIR.'libs/'.$lib.'.php';
+		if(!$GLOBALS['libraries'][$lib]){
+        $GLOBALS['libraries'][$lib]=new $lib;
+        }
+        $this->$lib=$GLOBALS['libraries'][$lib];
+    }
+    /**
+    *Loads a view
+    **/
+    public function loadView($view,$input=array()){
+        
+        global $data;
+        $data=$input;
+        include PROJECT_DIR.'views/'.$view.'.php';
+        
+    }
+}

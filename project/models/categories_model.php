@@ -1,0 +1,47 @@
+<?php
+//Handling categories
+class categories_model extends b_model{
+    /**
+     * 
+     * @return object
+     * Gets a list of categories
+     */
+    public function getCategoryList(){
+        $r=$this->database->query('SELECT * FROM `categories`');
+        
+        $rs=$this->database->returnObject();
+        echo $this->database->getError();
+        return $rs;
+    }
+    /**
+     * 
+     * @return object
+     * Gets all the likes of a user
+     */
+    public function getUserLikes($id){
+     //   echo '<pre>';
+       // var_dump($_SESSION);
+        $q=$this->database->query('SELECT * FROM `likings` WHERE `user_id`='.$id.' AND type=1'); //Voluntary likes
+       // var_dump($q);
+        $rs=$this->database->returnObject();
+        //var_dump($rs);
+        return $rs;
+    }
+    /**
+     * 
+     * @param type $id
+     * @return boolean
+     * Deletes all likes.
+     */
+    public function deleteUserLikes($id){
+        $this->database->query('DELETE FROM `likings` WHERE `user_id`='.$id.' AND type=1'); //Voluntary likes only
+        return true;
+    }
+    public function setNewLikes($id,$data){
+       unset($data['act']);//Don't mess with it afterwards
+       foreach($data as $key=>$one){
+           $this->database->query('INSERT INTO `likings` (user_id,cat_id,type)
+               VALUES('.$id.','.$key.',1)');
+       }
+    }
+}

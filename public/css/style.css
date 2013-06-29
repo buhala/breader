@@ -1,0 +1,106 @@
+body{
+    font-size:10pt;
+    background:url('../img/bg.png');
+}
+#content{
+    /*-webkit-box-shadow: 0px 2px 5px rgba(50, 50, 50, 0.41);
+    -moz-box-shadow:    0px 2px 5px rgba(50, 50, 50, 0.41);
+    box-shadow:         0px 2px 5px rgba(50, 50, 50, 0.41);*/
+	border:1px solid rgba(50,50,50 0.41);
+    width:90%;
+    display:block;
+    margin:0 auto;
+}
+#container{
+
+    font-family:'Segoe UI','Helvetica','Arial',sans-serif;
+    display:block;
+}
+
+#menu{
+    
+    background-color:#222222;
+    display:block;
+    color:#a2a2a2;
+    font-size: 23pt;
+    padding-bottom:15px;
+}
+#menu img{
+    padding:5px;
+    vertical-align:middle;
+    display:inline-block;
+    
+}
+#menu #current{
+    color:#ff7f00;
+}
+#menu a{
+    text-decoration: none;
+    margin-right:20px;
+}
+#menu a:link,#menu a:visited,#menu a:active{
+    color:#a2a2a2;
+    
+}
+#menu a:hover{
+    color:#ff7f00;
+}
+#menu-links{
+    display:inline-block;
+    float:right;
+}
+#leftbar{
+    padding:5px;
+    background-color:#f6f6f6;
+    width:24%;
+    float:left;
+}
+#leftbar input[type=text],input[type=password]{
+     width:100%;
+}
+#rightbar{
+    padding: 1%;
+    width:73%;
+    margin-left:25%;
+    background-color:white;
+
+}
+#page{
+    padding-top:5px;
+    height:100%;
+    background-color: #f6f6f6;
+}
+#clear{
+    clear:both;
+}
+#footer{
+    text-align:center;
+    background-color:#ececec;
+}
+.button{
+    color:white;
+    cursor:pointer;
+    padding:5px 15px;
+ border-radius: 1px;
+background: #F99D30; /* Old browsers */
+/*background: -moz-linear-gradient(top, #ffd65e 0%, #febf04 100%); 
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffd65e), color-stop(100%,#febf04)); 
+background: -webkit-linear-gradient(top, #ffd65e 0%,#febf04 100%); 
+background: -o-linear-gradient(top, #ffd65e 0%,#febf04 100%); 
+background: -ms-linear-gradient(top, #ffd65e 0%,#febf04 100%); 
+background: linear-gradient(to bottom, #ffd65e 0%,#febf04 100%); */
+
+    border:1px solid #ff7f00;
+}
+.button:hover{
+	background-color:#FF7F00;
+}
+h2{
+    color:#ff7f00;
+}
+.text{
+    border:1px solid black;
+}
+.advert{
+    width:100%;
+}
