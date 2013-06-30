@@ -12,3 +12,4 @@ $GLOBALS['config']['index']['start_session']=true;
 $GLOBALS['config']['system']['update']=true;
 $GLOBALS['config']['system']['redirect_logged']='profile';
 define(SITE_PATH,'http://breader.localhost/');
+//remember to edit the .js file at public (stories.js)
