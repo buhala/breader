@@ -10,7 +10,7 @@ class rssReader_model extends b_model{
      * Chooses where to get the file from
      */
     public function setUrl($url){
-        $instance=new SimpleXMLElement($url,LIBXML_COMPACT,true);
+        $instance=new SimpleXMLElement(file_get_contents(trim($url)));
         $this->instance=$instance->channel;
     }
     /**
