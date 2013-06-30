@@ -29,17 +29,21 @@ class stories_model extends b_model{
             }
         }
         else{
-            $multiplier=(int)$collectivePopulation/$storiesCount;
+            $multiplier=(int)$storiesCount/$collectivePopulation;
+           // echo $multiplier;
             foreach($categories as $key=>$value){
-                $categories[$key]->storyCount=(int)$categories->popularity*$multiplier;
+                $categories[$key]->storyCount=(int)$categories[$key]->popularity*$multiplier;
+                
                 if($categories[$key]->storyCount==0){
                     $categories[$key]->storyCount++;
+                    
                 }
             }
             
             
             
         }
+       // var_dump($categories);
             return $categories;
     }
 }
