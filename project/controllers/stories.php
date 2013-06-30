@@ -1,6 +1,12 @@
 <?php
+/**
+ * Controller for showing stories
+ */
 class stories extends b_controller{
     private $storiesCount=20; //TODO:User based result
+    /**
+     * Shows needed stories
+     */
     public function index(){
         $this->loadModel('stories_model');
         $feeds=$this->stories_model->getSubscribedFeeds($_SESSION['user'][0]['id']);

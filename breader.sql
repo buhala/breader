@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
+  `related_to` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
@@ -36,17 +37,17 @@ CREATE TABLE IF NOT EXISTS `categories` (
 -- Ссхема на данните от таблица `categories`
 --
 
-INSERT INTO `categories` (`id`, `name`) VALUES
-(1, 'World news'),
-(2, 'Europe'),
-(3, 'America'),
-(4, 'Technology'),
-(5, 'Entertainment'),
-(6, 'Sport'),
-(7, 'Football'),
-(8, 'Business'),
-(9, 'Politics'),
-(10, 'Enviroment');
+INSERT INTO `categories` (`id`, `name`, `related_to`) VALUES
+(1, 'World news', '2,3'),
+(2, 'Europe', '1,3'),
+(3, 'America', '1,3'),
+(4, 'Technology', '10,8'),
+(5, 'Entertainment', '6,7'),
+(6, 'Sport', '5,7'),
+(7, 'Football', '5,6'),
+(8, 'Business', '9,10,4'),
+(9, 'Politics', '10,8'),
+(10, 'Enviroment', '9');
 
 -- --------------------------------------------------------
 
@@ -148,17 +149,17 @@ CREATE TABLE IF NOT EXISTS `likings` (
   `user_id` int(11) NOT NULL,
   `cat_id` int(11) NOT NULL,
   `type` int(1) NOT NULL,
+  `popularity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Ссхема на данните от таблица `likings`
 --
 
-INSERT INTO `likings` (`id`, `user_id`, `cat_id`, `type`) VALUES
-(1, 1, 1, 1),
-(2, 1, 2, 1),
-(3, 2, 1, 1);
+INSERT INTO `likings` (`id`, `user_id`, `cat_id`, `type`, `popularity`) VALUES
+(11, 1, 7, 1, 5),
+(12, 1, 9, 1, 5);
 
 -- --------------------------------------------------------
 

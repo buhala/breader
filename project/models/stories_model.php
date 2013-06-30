@@ -1,5 +1,14 @@
 <?php
+/**
+ * Main application model, gets stories
+ */
 class stories_model extends b_model{
+    /**
+     * 
+     * @param type $id
+     * @return \stdClass
+     * Gets all feeds+categories the user is subscribed to
+     */
     public function getSubscribedFeeds($id){
         $this->database->query('SELECT likings.cat_id,likings.type,likings.popularity,categories.name,categories.related_to FROM likings,categories WHERE user_id='.$id.' AND categories.id=likings.cat_id');
         $likes=$this->database->returnObject();
@@ -13,6 +22,12 @@ class stories_model extends b_model{
         return $return;
         
     }
+    /**
+     * 
+     * @param type $categories
+     * @return type
+     * Gets all the popularity for the stories
+     */
     public function getCollectivePopulation($categories){
         $collectivePopularity=0;
         foreach($categories as $cat){
@@ -20,6 +35,14 @@ class stories_model extends b_model{
         }
         return $collectivePopularity;
     }
+    /**
+     * 
+     * @param type $collectivePopulation
+     * @param type $storiesCount
+     * @param type $categories
+     * @return type
+     * Gets how many stories per category should there be
+     */
     public function getStoriesPerCategory($collectivePopulation,$storiesCount,$categories){
         if($collectivePopulation==0){
             $splitter=count($categories);
