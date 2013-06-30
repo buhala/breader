@@ -50,10 +50,14 @@ body{
     float:right;
 }
 #leftbar{
+    font-size: 12pt;
     padding:5px;
     background-color:#f6f6f6;
     width:24%;
     float:left;
+}
+#leftbar a:visited,a:link{
+    color:black;
 }
 #leftbar input[type=text],input[type=password]{
      width:100%;

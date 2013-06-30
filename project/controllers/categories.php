@@ -21,7 +21,7 @@ class categories extends b_controller{
         $this->loadModel('categories_model');
         $this->categories_model->deleteUserLikes($_SESSION['user'][0]['id']);
         $this->categories_model->setNewLikes($_SESSION['user'][0]['id'],$_POST);
-        $this->redirection->r('profile');
+        $this->redirection->r('redirectionController');
     }
     
 }

@@ -1,4 +1,5 @@
 $(function(){
+   var site_path='http://breader.localhost/';
    $('.register').on('click',function(){
        $('#login_form').hide();
        $('#forgot_form').hide();
@@ -30,7 +31,7 @@ $(function(){
        ajax_setup.success=function(response){
            console.log(response);
            if(response.success==true){
-               window.location.href='login/Success';              
+               window.location.href=site_path+'redirectionController';              
            }
            else{
                if(response.error=='INVALID_DATA'){
@@ -57,7 +58,8 @@ $(function(){
        ajax_setup.success=function(response){
            console.log(response);
            if(response.success==true){
-               window.location.href='login/Success';              
+               alert('You have been registered. You can now login!');
+               window.location.href=site_path+'login';              
            }
            else{
                if(response.error=='INVALID_MAIL'){

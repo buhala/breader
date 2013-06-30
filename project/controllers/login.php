@@ -12,14 +12,13 @@ class login extends b_controller{
          * @todo Redirect if logged in
          */
     public function index(){
-        $this->redirection->redirectIfLogged('profile');
+        $this->redirection->redirectIfLogged('redirectionController');
         $this->loadView('login');
     }
     /**
      * Handles the login
      */
-    public function ajaxLogin(){
-        
+    public function ajaxLogin($username='',$password=''){
         $this->loadModel('login_model');
         $escaped_data=$this->login_model->escapeData($_POST);
         //echo 'qwe';
@@ -71,6 +70,8 @@ class login extends b_controller{
     public function destroy_session(){
         //TODO:Delete after actual logout
         session_destroy();
+        
+        $this->redirection->r('redirectionController');
     }
 
     
