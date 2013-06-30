@@ -27,8 +27,9 @@ class rssReader_model extends b_model{
      * @return type
      * Gets a random story
      */
-    public function getRandom(){      
-        return $this->instance->item[rand(0,10)]; //If someone could explain why array_rand decides this is an object :(
+    public function getRandom($last=10){      
+        
+        return $this->instance->item[rand(0,$last)]; //If someone could explain why array_rand decides this is an object :(
     }
     /**
      * 

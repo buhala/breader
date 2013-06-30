@@ -69,7 +69,14 @@ class stories_model extends b_model{
        // var_dump($categories);
             return $categories;
     }
-    
+    /**
+     * 
+     * @param type $categories
+     * @param type $feeds
+     *
+     * @return type
+     * Returns random stories from subscribed categories
+     */
     public function getRandomStories($categories,$feeds){
       //  print_r($feeds);
         $this->loadModel('rssReader_model');
@@ -83,6 +90,7 @@ class stories_model extends b_model{
                 //echo 'Choosing URL:'.$randomFeed;
                 $this->rssReader_model->setUrl($randomFeed);
                 $story=$this->rssReader_model->getRandom();
+                $story->cat_id=$cat->cat_id;
                 $stories[]=$story;
             }
         }
