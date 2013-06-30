@@ -60,9 +60,9 @@ class forgot_model extends b_model{
         return $return;
     }
     public function changeFinal($passwords,$key){
-        var_dump($passwords); var_dump($key);
+        //var_dump($passwords); var_dump($key);
         if($passwords['newpass']==$passwords['reppass']){
-            echo 'UPDATE users SET password="'.$this->hash->h($passwords['newpass']).'" WHERE `key`="'.$this->database->escape($key).'"';
+            //echo 'UPDATE users SET password="'.$this->hash->h($passwords['newpass']).'" WHERE `key`="'.$this->database->escape($key).'"';
             $this->database->query('UPDATE users SET password="'.$this->hash->h($passwords['newpass']).'" WHERE `key`="'.$this->database->escape($key).'"');
             $return['success']=true;
             

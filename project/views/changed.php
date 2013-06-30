@@ -10,9 +10,9 @@ else{
 ?>
 <script>
     if(back==1){
-       //    window.history.back();
+           window.history.back();
     }
     else{
-          //  window.location.href="<?=SITE_PATH?>redirectionController";
+            window.location.href="<?=SITE_PATH?>redirectionController";
     }
 </script>
