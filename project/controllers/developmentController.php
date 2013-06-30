@@ -18,4 +18,7 @@ class developmentController extends b_controller{
         $this->loadView('siteTop');
         $this->loadView('siteFooter');
     }
+    public function getFeed(){
+        echo file_get_contents('http://www.thetimes.co.uk/tto/sport/football/rss');
+    }
 }

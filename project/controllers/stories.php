@@ -14,7 +14,9 @@ class stories extends b_controller{
         //var_dump($feeds);
         $popularity=$this->stories_model->getCollectivePopulation($feeds->categories);
         $rs=$this->stories_model->getStoriesPerCategory($popularity,$this->storiesCount,$feeds->categories);
-        var_dump($rs);
+       // var_dump($rs);
+        $final=$this->stories_model->getRandomStories($rs,$feeds->feeds);
+        var_dump($final);
         
     }
 }

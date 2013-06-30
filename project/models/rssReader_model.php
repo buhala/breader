@@ -10,7 +10,7 @@ class rssReader_model extends b_model{
      * Chooses where to get the file from
      */
     public function setUrl($url){
-        $instance=new SimpleXMLElement(file_get_contents($url));
+        $instance=new SimpleXMLElement($url,LIBXML_COMPACT,true);
         $this->instance=$instance->channel;
     }
     /**
@@ -19,7 +19,16 @@ class rssReader_model extends b_model{
      * Returns all news
      */
     public function getAllNews(){
-        return $this->instance->item;
+        
+        return $this->instance->item[1];
+    }
+    /**
+     * 
+     * @return type
+     * Gets a random story
+     */
+    public function getRandom(){      
+        return $this->instance->item[rand(0,10)]; //If someone could explain why array_rand decides this is an object :(
     }
     /**
      * 

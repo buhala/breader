@@ -14,7 +14,7 @@ class stories_model extends b_model{
         $likes=$this->database->returnObject();
         foreach($likes as $like){
             $this->database->query('SELECT * FROM feeds WHERE cat_id='.$like->cat_id);
-            $feeds[]=$this->database->returnObject();
+            $feeds[$like->cat_id]=$this->database->returnObject();
         }
         $return=new stdClass();
         $return->feeds=$feeds;
@@ -68,5 +68,25 @@ class stories_model extends b_model{
         }
        // var_dump($categories);
             return $categories;
+    }
+    
+    public function getRandomStories($categories,$feeds){
+      //  print_r($feeds);
+        $this->loadModel('rssReader_model');
+        foreach($categories as $cat){
+            $i=0;
+            while($i<$cat->storyCount){
+               // print_r($cat);
+                $i++;
+                $randomFeed=$feeds[$cat->cat_id][array_rand($feeds[$cat->cat_id])]->link; //If this is not complicated, I don't know what is
+               // print_r($randomFeed);
+                //echo 'Choosing URL:'.$randomFeed;
+                $this->rssReader_model->setUrl($randomFeed);
+                $story=$this->rssReader_model->getRandom();
+                $stories[]=$story;
+            }
+        }
+        shuffle($stories);
+        return $stories;
     }
 }
