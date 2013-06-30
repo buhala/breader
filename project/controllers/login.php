@@ -68,7 +68,9 @@ class login extends b_controller{
         else{
 
             $rs=$this->forgot_model->doChange($escapedData);
-            $mailText='Activate your new password at '.SITE_PATH.'/login/restorePass/'.$key;
+            $mailText='Activate your new password at '.SITE_PATH.'login/restorePass/'.$key;
+            $this->loadLibrary('mailer');
+            $this->mailer->sendMail('bReader password reset',$GLOBALS['config']['system']['email'],$_POST['username'],$mailText);
             $this->loadView('JsonDisplay',$rs);
         }
     }

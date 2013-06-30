@@ -1,19 +1,14 @@
 <?php
+include PROJECT_DIR.'libs/swift/swift_required.php';
 class mailer extends b_library{
-    private $transport;
-    private $message;
-    public function __construct() {
-        mail('fix288@gmail.com', 'test', '$message');
-
-        
-        
-        
-    }
     public function sendMail($subject,$from,$to,$body){
-        $this->message->setSender($from);
-        $this->message->setSubject($subject);
-        $this->message->setTo($to);
-        $this->message->setBody($body, 'text/html');
-        $this->transport->send($this->message);
+        $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl');
+        $transport->setUsername('username@gmail.com');
+        $transport->setPassword('pASSWORD');
+        $mailer = Swift_Mailer::newInstance($transport);
+        $message= Swift_Message::newInstance($subject,$body);
+        $message->setSender($from);
+        $message->setTo($to);
+        $mailer->send($message);
     }
 }

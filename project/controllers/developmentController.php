@@ -18,6 +18,10 @@ class developmentController extends b_controller{
         $this->loadView('siteTop');
         $this->loadView('siteFooter');
     }
+    public function sendMail(){
+        $this->loadLibrary('mailer');
+        $this->mailer->sendMail('b','fix288@gmail.com','me@buhala.uchenici.bg','asdfa');
+    }
     public function getFeed(){
         echo file_get_contents('http://www.thetimes.co.uk/tto/sport/football/rss');
     }
