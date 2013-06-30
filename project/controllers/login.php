@@ -53,11 +53,15 @@ class login extends b_controller{
             $this->loadView('JsonDisplay',$rs);
         }
     }
+    /**
+     * Forgot password reset.
+     */
     public function ajaxForgotPassword(){
         
         $this->loadModel('forgot_model');
         $escapedData=$this->forgot_model->escapeData($_POST);
         $rs=$this->forgot_model->validateData($escapedData);
+        //var_dump($rs);
         if($rs['success']==false){
             $this->loadView('JsonDisplay',$rs);
         }
@@ -65,10 +69,26 @@ class login extends b_controller{
 
             $rs=$this->forgot_model->doChange($escapedData);
             $mailText='Activate your new password at '.SITE_PATH.'/login/restorePass/'.$key;
+            $this->loadView('JsonDisplay',$rs);
         }
     }
+    public function restorePass($key){
+        $this->loadView('siteTop');
+        $this->loadModel('forgot_model');
+        $escapedKey=$this->forgot_model->escapeKey($key);
+        $rs=$this->forgot_model->checkKey($escapedKey);
+        $rs['key']=$escapedKey;
+        $this->loadView('resetPass',$rs);
+        $this->loadView('siteFooter');
+    }
+    public function newPass($key){
+        $this->loadView('siteTop'); //So we load nessesary JS
+        $this->loadModel('forgot_model');
+        $rs=$this->forgot_model->changeFinal($_POST,$key);
+        $this->loadView('changed',$rs);
+
+    }
     public function destroy_session(){
-        //TODO:Delete after actual logout
         session_destroy();
         
         $this->redirection->r('redirectionController');

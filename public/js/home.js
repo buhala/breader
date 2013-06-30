@@ -79,4 +79,29 @@ $(function(){
        $.ajax(ajax_setup);
        
    });
+      $('#forgot_submit').on('click',function(){
+       var ajax_setup={};
+       ajax_setup.url='login/ajaxForgotPassword'; 
+       ajax_setup.type='post';
+       ajax_setup.cache=false;
+       ajax_setup.data={};
+       ajax_setup.data.username=$('#forgot_username').val();
+       ajax_setup.dataType='json';
+       ajax_setup.error=function(){
+           console.log('Something is very wrong');
+           
+       };
+       ajax_setup.success=function(response){
+           console.log(response);
+           if(response.success==true){
+               alert('You have been sent an email containing further instructions');
+               //window.location.href=site_path+'login';              
+           }
+           else{
+               alert('Your user does not exist');
+           }
+       };
+       $.ajax(ajax_setup);
+       
+   });
 });
