@@ -60,83 +60,48 @@ CREATE TABLE IF NOT EXISTS `feeds` (
   `cat_id` int(11) NOT NULL,
   `link` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=75 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
 
 --
 -- Ссхема на данните от таблица `feeds`
 --
 
 INSERT INTO `feeds` (`id`, `cat_id`, `link`) VALUES
-(5, 1, 'http://rss.cnn.com/rss/edition_world.rss\n'),
-(6, 1, 'http://feeds.bbci.co.uk/news/video_and_audio/world/rss.xml\n'),
-(7, 1, 'http://feeds.reuters.com/Reuters/worldNews?format=xml\n'),
-(8, 1, 'http://www.thetimes.co.uk/tto/news/world/rss\n'),
-(9, 2, 'http://www.thetimes.co.uk/tto/news/world/europe/rss\n'),
-(10, 2, 'http://rss.cnn.com/rss/edition_europe.rss\n'),
-(11, 2, 'http://feeds.bbci.co.uk/news/world/europe/rss.xml	\n'),
-(12, 3, 'http://www.thetimes.co.uk/tto/news/world/americas/rss\n'),
-(13, 3, 'http://rss.cnn.com/rss/edition_americas.rss\n'),
-(14, 3, 'http://feeds.bbci.co.uk/news/world/latin_america/rss.xml\n'),
-(15, 4, 'http://web.mit.edu/newsoffice/rss-feeds.feed?type=rss&cat=topnews\n'),
-(16, 4, 'http://images.apple.com/main/rss/hotnews/hotnews.rss\n'),
-(17, 4, 'http://www.thetimes.co.uk/tto/technology/rss\n'),
-(18, 4, 'http://rss.cnn.com/rss/edition_technology.rss\n'),
-(19, 4, 'http://feeds.feedburner.com/cnet/tcoc?format=xml\n'),
-(20, 4, 'http://feeds.bbci.co.uk/news/video_and_audio/technology/rss.xml\n'),
-(21, 4, 'http://feeds.reuters.com/reuters/technologyNews?format=xml\n'),
-(22, 5, 'http://feeds.feedburner.com/thr/news\n'),
-(23, 5, 'http://rss.cnn.com/rss/edition_entertainment.rss\n'),
-(24, 5, 'http://feeds.reuters.com/reuters/entertainment?format=xml\n'),
-(25, 6, 'http://www.thetimes.co.uk/tto/sport/rss\n'),
-(26, 6, 'http://rss.cnn.com/rss/edition_sport.rss\n'),
-(27, 6, 'http://feeds.reuters.com/reuters/sportsNews?format=xml\n'),
-(28, 7, 'http://www.thetimes.co.uk/tto/sport/football/rss\n'),
-(29, 7, 'http://rss.cnn.com/rss/edition_football.rss\n'),
-(30, 8, 'http://www.thetimes.co.uk/tto/business/rss\n'),
-(31, 8, 'http://rss.cnn.com/rss/edition_business360.rss\n'),
-(32, 8, 'http://feeds.bbci.co.uk/news/business/rss.xml\n'),
-(33, 8, 'http://feeds.reuters.com/reuters/businessNews?format=xml\n'),
-(34, 9, 'http://www.thetimes.co.uk/tto/news/politics/rss\n'),
-(35, 9, 'http://feeds.bbci.co.uk/news/politics/rss.xml\n'),
-(36, 9, 'http://feeds.reuters.com/Reuters/PoliticsNews?format=xml\n'),
-(37, 10, 'http://www.motherearthnews.com/rss/blogs/ask_our_experts.aspx\n'),
-(38, 10, 'http://feeds.reuters.com/reuters/environment?format=xml\n'),
-(39, 1, 'http://rss.cnn.com/rss/edition_world.rss\n'),
-(40, 10, 'http://www.thetimes.co.uk/tto/environment/rss'),
-(41, 1, 'http://feeds.bbci.co.uk/news/video_and_audio/world/rss.xml\n'),
-(42, 1, 'http://feeds.reuters.com/Reuters/worldNews?format=xml\n'),
-(43, 1, 'http://www.thetimes.co.uk/tto/news/world/rss\n'),
-(44, 2, 'http://www.thetimes.co.uk/tto/news/world/europe/rss\n'),
-(45, 2, 'http://rss.cnn.com/rss/edition_europe.rss\n'),
-(46, 2, 'http://feeds.bbci.co.uk/news/world/europe/rss.xml	\n'),
-(47, 3, 'http://www.thetimes.co.uk/tto/news/world/americas/rss\n'),
-(48, 3, 'http://rss.cnn.com/rss/edition_americas.rss\n'),
-(49, 3, 'http://feeds.bbci.co.uk/news/world/latin_america/rss.xml\n'),
-(50, 4, 'http://web.mit.edu/newsoffice/rss-feeds.feed?type=rss&cat=topnews\n'),
-(51, 4, 'http://images.apple.com/main/rss/hotnews/hotnews.rss\n'),
-(52, 4, 'http://www.thetimes.co.uk/tto/technology/rss\n'),
-(53, 4, 'http://rss.cnn.com/rss/edition_technology.rss\n'),
-(54, 4, 'http://feeds.feedburner.com/cnet/tcoc?format=xml\n'),
-(55, 4, 'http://feeds.bbci.co.uk/news/video_and_audio/technology/rss.xml\n'),
-(56, 4, 'http://feeds.reuters.com/reuters/technologyNews?format=xml\n'),
-(57, 5, 'http://feeds.feedburner.com/thr/news\n'),
-(58, 5, 'http://rss.cnn.com/rss/edition_entertainment.rss\n'),
-(59, 5, 'http://feeds.reuters.com/reuters/entertainment?format=xml\n'),
-(60, 6, 'http://www.thetimes.co.uk/tto/sport/rss\n'),
-(61, 6, 'http://rss.cnn.com/rss/edition_sport.rss\n'),
-(62, 6, 'http://feeds.reuters.com/reuters/sportsNews?format=xml\n'),
-(63, 7, 'http://www.thetimes.co.uk/tto/sport/football/rss\n'),
-(64, 7, 'http://rss.cnn.com/rss/edition_football.rss\n'),
-(65, 8, 'http://www.thetimes.co.uk/tto/business/rss\n'),
-(66, 8, 'http://rss.cnn.com/rss/edition_business360.rss\n'),
-(67, 8, 'http://feeds.bbci.co.uk/news/business/rss.xml\n'),
-(68, 8, 'http://feeds.reuters.com/reuters/businessNews?format=xml\n'),
-(69, 9, 'http://www.thetimes.co.uk/tto/news/politics/rss\n'),
-(70, 9, 'http://feeds.bbci.co.uk/news/politics/rss.xml\n'),
-(71, 9, 'http://feeds.reuters.com/Reuters/PoliticsNews?format=xml\n'),
-(72, 10, 'http://www.motherearthnews.com/rss/blogs/ask_our_experts.aspx\n'),
-(73, 10, 'http://feeds.reuters.com/reuters/environment?format=xml\n'),
-(74, 10, 'http://www.thetimes.co.uk/tto/environment/rss');
+(1, 1, 'http://rss.cnn.com/rss/edition_world.rss'),
+(2, 1, 'http://feeds.bbci.co.uk/news/video_and_audio/world/rss.xml'),
+(3, 1, 'http://feeds.reuters.com/Reuters/worldNews?format=xml'),
+(4, 1, 'http://www.thetimes.co.uk/tto/news/world/rss'),
+(5, 2, 'http://www.thetimes.co.uk/tto/news/world/europe/rss'),
+(6, 2, 'http://rss.cnn.com/rss/edition_europe.rss'),
+(7, 2, 'http://feeds.bbci.co.uk/news/world/europe/rss.xml	'),
+(8, 3, 'http://www.thetimes.co.uk/tto/news/world/americas/rss'),
+(9, 3, 'http://rss.cnn.com/rss/edition_americas.rss'),
+(10, 3, 'http://feeds.bbci.co.uk/news/world/latin_america/rss.xml'),
+(11, 4, 'http://web.mit.edu/newsoffice/rss-feeds.feed?type=rss&cat=topnews'),
+(12, 4, 'http://images.apple.com/main/rss/hotnews/hotnews.rss'),
+(13, 4, 'http://www.thetimes.co.uk/tto/technology/rss'),
+(14, 4, 'http://rss.cnn.com/rss/edition_technology.rss'),
+(15, 4, 'http://feeds.feedburner.com/cnet/tcoc?format=xml'),
+(16, 4, 'http://feeds.bbci.co.uk/news/video_and_audio/technology/rss.xml'),
+(17, 4, 'http://feeds.reuters.com/reuters/technologyNews?format=xml'),
+(18, 5, 'http://feeds.feedburner.com/thr/news'),
+(19, 5, 'http://rss.cnn.com/rss/edition_entertainment.rss'),
+(20, 5, 'http://feeds.reuters.com/reuters/entertainment?format=xml'),
+(21, 6, 'http://www.thetimes.co.uk/tto/sport/rss'),
+(22, 6, 'http://rss.cnn.com/rss/edition_sport.rss'),
+(23, 6, 'http://feeds.reuters.com/reuters/sportsNews?format=xml'),
+(24, 7, 'http://www.thetimes.co.uk/tto/sport/football/rss'),
+(25, 7, 'http://rss.cnn.com/rss/edition_football.rss'),
+(26, 8, 'http://www.thetimes.co.uk/tto/business/rss'),
+(27, 8, 'http://rss.cnn.com/rss/edition_business360.rss'),
+(28, 8, 'http://feeds.bbci.co.uk/news/business/rss.xml'),
+(29, 8, 'http://feeds.reuters.com/reuters/businessNews?format=xml'),
+(30, 9, 'http://www.thetimes.co.uk/tto/news/politics/rss'),
+(31, 9, 'http://feeds.bbci.co.uk/news/politics/rss.xml'),
+(32, 9, 'http://feeds.reuters.com/Reuters/PoliticsNews?format=xml'),
+(33, 10, 'http://www.motherearthnews.com/rss/blogs/ask_our_experts.aspx'),
+(34, 10, 'http://feeds.reuters.com/reuters/environment?format=xml'),
+(35, 10, 'http://www.thetimes.co.uk/tto/environment/rss');
 
 -- --------------------------------------------------------
 
@@ -151,15 +116,23 @@ CREATE TABLE IF NOT EXISTS `likings` (
   `type` int(1) NOT NULL,
   `popularity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Ссхема на данните от таблица `likings`
 --
 
 INSERT INTO `likings` (`id`, `user_id`, `cat_id`, `type`, `popularity`) VALUES
-(11, 1, 7, 1, 5),
-(12, 1, 9, 1, 5);
+(13, 1, 1, 1, 0),
+(14, 1, 2, 1, 0),
+(15, 1, 3, 1, 0),
+(16, 1, 4, 1, 0),
+(17, 1, 5, 1, 0),
+(18, 1, 6, 1, 24),
+(19, 1, 7, 1, 1),
+(20, 1, 8, 1, 0),
+(21, 1, 9, 1, 0),
+(22, 1, 10, 1, 0);
 
 -- --------------------------------------------------------
 
