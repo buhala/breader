@@ -1,8 +1,8 @@
 <?php
 error_reporting(E_ERROR | E_WARNING | E_PARSE); //The system occasionally throws a notice
 //default_socket_timeout(6);
-define('SYSTEM_DIR', 'C:\xampp\htdocs\bframe\system/');//Change this line in case you move the project somewhere else
-define('PROJECT_DIR','C:\xampp\htdocs\bframe\project/'); //Defines project-based files
+define('SYSTEM_DIR', 'C:\xampp\htdocs\breader\system/');//Change this line in case you move the project somewhere else
+define('PROJECT_DIR','C:\xampp\htdocs\breader\project/'); //Defines project-based files
 include SYSTEM_DIR.'includes.php'; 
 if($GLOBALS['config']['index']['start_session']){
     ob_start();
