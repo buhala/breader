@@ -32,7 +32,7 @@ class rssReader_model extends b_model{
      */
     public function getAllNews(){
         
-        return $this->instance->item[1];
+        return $this->instance->item;
     }
     /**
      * 
@@ -40,7 +40,6 @@ class rssReader_model extends b_model{
      * Gets a random story
      */
     public function getRandom($last=10){      
-        //echo 'Random story!';
         return $this->instance->item[rand(0,$last)]; //If someone could explain why array_rand decides this is an object :(
     }
     /**

@@ -48,7 +48,7 @@ class stories extends b_controller{
      */
     
     
-    public function showStories(){
+    public function showStories($sortby='random'){
         $this->loadModel('stories_model');
         $feeds=$this->stories_model->getSubscribedFeeds($_SESSION['user'][0]['id']);
         //echo '<pre>';
@@ -60,13 +60,25 @@ class stories extends b_controller{
         $popularity=$this->stories_model->getCollectivePopulation($feeds->categories);
         $rs=$this->stories_model->getStoriesPerCategory($popularity,$this->storiesCount,$feeds->categories);
        // var_dump($rs);
-        $final=$this->stories_model->getRandomStories($rs,$feeds->feeds);
+        if($sortby=='random'){
+            $final=$this->stories_model->getRandomStories($rs,$feeds->feeds);
+        }
+        elseif($sortby=='new'){
+            
+            $final=$this->stories_model->getNewestStories($rs,$feeds->feeds);
+        }
         $cats=$this->stories_model->getSuggestedCategories($feeds->categories,$_SESSION['user'][0]['id']);
         $feeds_recommended=$this->stories_model->getSubscribedFeeds($_SESSION['user'][0]['id'],$cats);
         //var_dump($feeds);
         $popularity_recommended=$this->stories_model->getCollectivePopulation($feeds_recommended->categories);
         $rs_recommended=$this->stories_model->getStoriesPerCategory($popularity_recommended,$this->recommendedStoriesCount,$feeds_recommended->categories);
-        $final_recommended=$this->stories_model->getRandomStories($rs_recommended,$feeds_recommended->feeds,true); //We want to show the user a notice this story is a recommendation
+        if($sortby=='random'){
+            $final_recommended=$this->stories_model->getRandomStories($rs_recommended,$feeds_recommended->feeds,true); //We want to show the user a notice this story is a recommendation
+        }
+        elseif($sortby=='new'){
+            $final_recommended=$this->stories_model->getNewestStories($rs_recommended,$feeds_recommended->feeds,true); //We want to show the user a notice this story is a recommendation
+
+        }
         $toView=  array_merge($final,$final_recommended);
         
         shuffle($toView);

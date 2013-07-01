@@ -120,6 +120,46 @@ class stories_model extends b_model{
         shuffle($stories);
         return $stories;
     }
+    /**
+     * 
+     * @param type $categories
+     * @param type $feeds
+     * @param type $recommended
+     * @return type
+     * Gets the newest stories
+     */
+    public function getNewestStories($categories,$feeds,$recommended=false){
+       
+        $this->loadModel('rssReader_model');
+        $stories=array(); //To prevent a notice
+        foreach($categories as $cat){
+            $i=0;
+            while($i<$cat->storyCount){
+                $i++;
+                //We are still picking random feeds :)
+                $randomFeed=$feeds[$cat->cat_id][array_rand($feeds[$cat->cat_id])]->link; 
+                $this->rssReader_model->setUrl($randomFeed);
+                $stories_cat=$this->rssReader_model->getFirstNews(3);
+                $increase=0;
+                foreach($stories_cat as $story){
+                if(is_object($story)){
+                    
+                    $increase++;
+                    $story->cat_id=$cat->cat_id;
+                    if($recommended==true){
+
+                        $story->is_recommended=true;
+                    }
+                    $stories[]=$story;
+                }
+            }
+            $i=$i+$increase;
+            }
+        }
+        shuffle($stories);
+        $stories=array_unique($stories);
+        return $stories;
+    }
     public function getSuggestedCategories($categories,$id){
         $recommended=array();
         foreach($categories as $cat){

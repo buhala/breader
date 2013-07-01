@@ -26,6 +26,7 @@
                         ?>
                         <h2>Useful links</h2>
                          <a href="<?=SITE_PATH?>stories">Read stories</a><br>
+                         <a href="<?=SITE_PATH?>stories?sort=new">Read <b>the newest</b> stories</a><br>
                         <a href="<?=SITE_PATH?>categories/chooseCategories">Choose your subsciptions</a><br>
                         <a href="<?=SITE_PATH?>help">Help me, I'm lost!</a><br>
                         <a href="<?=SITE_PATH?>stories/addFeed">Add your own RSS feed!</a>
