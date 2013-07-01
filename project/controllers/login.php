@@ -83,6 +83,7 @@ class login extends b_controller{
         $this->loadView('resetPass',$rs);
         $this->loadView('siteFooter');
     }
+
     public function newPass($key){
         $this->loadView('siteTop'); //So we load nessesary JS
         $this->loadModel('forgot_model');

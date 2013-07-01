@@ -25,12 +25,11 @@ class login_model extends b_model{
 
         $this->database->query('SELECT * FROM users WHERE username="'.$data['username'].'" AND password="'.$data['password'].'"');
         if($this->database->getRows()==1){
-            $success=true;
+            return true;
         }
         else{
-            $success=false;
+            return false;
         }
-        return $success;
     }
     /**
      * Creates the session for the user
@@ -40,4 +39,5 @@ class login_model extends b_model{
         $_SESSION['user']=$this->database->returnArray();
         $_SESSION['il']=true;
     }
+
 }
