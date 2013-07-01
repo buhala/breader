@@ -20,7 +20,7 @@ class b_library{
      * @param type $lib
      */
     public function loadLibrary($lib){
-        include PROJECT_DIR.'libs/'.$lib.'.php';
+        include_once PROJECT_DIR.'libs/'.$lib.'.php';
 		if(!$GLOBALS['libraries'][$lib]){
         $GLOBALS['libraries'][$lib]=new $lib;
 		}

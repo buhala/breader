@@ -92,6 +92,7 @@ class stories_model extends b_model{
                 $story=$this->rssReader_model->getRandom();
                 $story->cat_id=$cat->cat_id;
                 $stories[]=$story;
+                
             }
         }
         shuffle($stories);

@@ -9,16 +9,17 @@ class b_controller{
         }
     }
     public function loadModel($model){
-        include PROJECT_DIR.'models/'.$model.'.php';	
-        $this->$model=new $model;
-		
+        include_once PROJECT_DIR.'models/'.$model.'.php';
+        if(!$this->model){
+            $this->$model=new $model;
+        }
         
     }
     /**
     *Loads a library
     **/
     public function loadLibrary($lib){
-        include PROJECT_DIR.'libs/'.$lib.'.php';
+        include_once PROJECT_DIR.'libs/'.$lib.'.php';
 		if(!$GLOBALS['libraries'][$lib]){
         $GLOBALS['libraries'][$lib]=new $lib;
         }
@@ -31,7 +32,7 @@ class b_controller{
         
         global $data;
         $data=$input;
-        include PROJECT_DIR.'views/'.$view.'.php';
+        include_once PROJECT_DIR.'views/'.$view.'.php';
         
     }
 }

@@ -10,7 +10,19 @@ class rssReader_model extends b_model{
      * Chooses where to get the file from
      */
     public function setUrl($url){
-        $instance=new SimpleXMLElement(file_get_contents(trim($url)));
+        $url=trim($url); //Do not touch, mysql sometimes does things you woudn't believe
+        $this->loadModel('cache_model');
+        if($this->cache_model->checkDB($url)){
+            
+            $result= $this->cache_model->getCache($url);
+        }
+        else{
+            $rs=file_get_contents($url);
+            $this->cache_model->writeCache($url,$rs);
+            $result=$rs;
+        }
+       // echo SITE_PATH.'cache/getFeed?url='.urlencode(trim($url));
+        $instance=new SimpleXMLElement($result);
         $this->instance=$instance->channel;
     }
     /**
@@ -28,7 +40,7 @@ class rssReader_model extends b_model{
      * Gets a random story
      */
     public function getRandom($last=10){      
-        
+        //echo 'Random story!';
         return $this->instance->item[rand(0,$last)]; //If someone could explain why array_rand decides this is an object :(
     }
     /**
