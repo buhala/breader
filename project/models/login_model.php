@@ -36,6 +36,7 @@ class login_model extends b_model{
      * Creates the session for the user
      */
     public function createSession(){
+        
         $_SESSION['user']=$this->database->returnArray();
         $_SESSION['il']=true;
     }

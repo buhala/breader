@@ -23,5 +23,9 @@ class categories extends b_controller{
         $this->categories_model->setNewLikes($_SESSION['user'][0]['id'],$_POST);
         $this->redirection->r('redirectionController');
     }
+    public function deleteRecommendation($id){
+        $this->loadModel('categories_model');
+        $this->categories_model->disableRecommendation((int)$id,$_SESSION['user'][0]['id']);
+    }
     
 }

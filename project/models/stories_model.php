@@ -98,6 +98,7 @@ class stories_model extends b_model{
                 //echo 'Choosing URL:'.$randomFeed;
                 $this->rssReader_model->setUrl($randomFeed);
                 $story=$this->rssReader_model->getRandom();
+                if(is_object($story)){
                 $story->cat_id=$cat->cat_id;
                 if($recommended==true){
                     
@@ -110,7 +111,10 @@ class stories_model extends b_model{
                 else{
                 $stories[]=$story;
                 }
-                
+                }
+                else{
+                    $i--;
+                }
             }
         }
         shuffle($stories);

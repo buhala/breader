@@ -1,12 +1,13 @@
-<!--Social JS -->
+<script src="<?=SITE_PATH?>js/stories_loaded.js"></script>
 
 <?php
 foreach($data as $entry){
     //It is with GET so special chars don't glitch stuff
     echo '<h3><a href="'.SITE_PATH.'link/visit/'.$entry->cat_id.'?url='.urlencode($entry->link).'">'.$entry->title.'</a></h3>'.strip_tags(substr($entry->description,0,140));
+    //**NO** Idea why this is like that
     $type=(array)$entry->is_recommended;
     if($type[0]=="1"){
-        echo '<br><small>This is a recommended story.</small>';
+        echo '<br><small>This is a recommended story.<a href="#" class="unsubscribe" id="'.$entry->cat_id.'" ><b>Click here to disable this type of stories</b></small>';
     }
 ?>
 <br>
@@ -23,6 +24,7 @@ foreach($data as $entry){
 <br>
 <hr>
 <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
+
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-51d0422f033735d0"></script>
 <!-- AddThis Button END -->
 <?php

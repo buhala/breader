@@ -27,4 +27,5 @@ $(function(){
        $('body').css('cursor','wait');
        loadNew(); 
     });
+    
 });

@@ -14,7 +14,7 @@ class stories extends b_controller{
         $this->loadModel('stories_model'); //We want it here, too
         $feeds=$this->stories_model->getSubscribedFeeds($_SESSION['user'][0]['id']);
         if(count($feeds->categories)==0){
-        //    $this->redirection->r('redirectionController'); //Just to be sure
+            $this->redirection->r('redirectionController'); //Just to be sure
         }
         $this->loadView('siteFooter');
     }
@@ -54,7 +54,7 @@ class stories extends b_controller{
         //echo '<pre>';
         //print_r($feeds);
         if(count($feeds->categories)==0){
-           // $this->redirection->r('redirectionController'); //Just to be sure
+            $this->redirection->r('redirectionController'); //Just to be sure
         }
         //var_dump($feeds);
         $popularity=$this->stories_model->getCollectivePopulation($feeds->categories);

@@ -44,4 +44,8 @@ class categories_model extends b_model{
                VALUES('.$id.','.$key.',1)');
        }
     }
+    public function disableRecommendation($cat_id,$uid){
+        $this->database->query('INSERT INTO `likings` (cat_id,user_id,type)
+            VALUES('.$cat_id.','.$uid.',0)');
+    }
 }
