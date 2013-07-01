@@ -4,6 +4,10 @@
 foreach($data as $entry){
     //It is with GET so special chars don't glitch stuff
     echo '<h3><a href="'.SITE_PATH.'link/visit/'.$entry->cat_id.'?url='.urlencode($entry->link).'">'.$entry->title.'</a></h3>'.strip_tags(substr($entry->description,0,140));
+    $type=(array)$entry->is_recommended;
+    if($type[0]=="1"){
+        echo '<br><small>This is a recommended story.</small>';
+    }
 ?>
 <br>
 

@@ -9,9 +9,14 @@ class stories_model extends b_model{
      * @return \stdClass
      * Gets all feeds+categories the user is subscribed to
      */
-    public function getSubscribedFeeds($id){
+    public function getSubscribedFeeds($id,$readyFeeds=''){
+        if(!is_object($readyFeeds)){
         $this->database->query('SELECT likings.cat_id,likings.type,likings.popularity,categories.name,categories.related_to FROM likings,categories WHERE user_id='.$id.' AND categories.id=likings.cat_id');
         $likes=$this->database->returnObject();
+        }
+        else{
+        $likes=$readyFeeds;
+        }
         foreach($likes as $like){
             $this->database->query('SELECT * FROM feeds WHERE cat_id='.$like->cat_id);
             $feeds[$like->cat_id]=$this->database->returnObject();
@@ -20,6 +25,7 @@ class stories_model extends b_model{
         $return->feeds=$feeds;
         $return->categories=$likes;
         return $return;
+        
         
     }
     /**
@@ -77,7 +83,8 @@ class stories_model extends b_model{
      * @return type
      * Returns random stories from subscribed categories
      */
-    public function getRandomStories($categories,$feeds){
+    public function getRandomStories($categories,$feeds,$recommended=false){
+        //This is used so we can return the value
       //  print_r($feeds);
         $this->loadModel('rssReader_model');
         $stories=array(); //To prevent a notice
@@ -92,6 +99,10 @@ class stories_model extends b_model{
                 $this->rssReader_model->setUrl($randomFeed);
                 $story=$this->rssReader_model->getRandom();
                 $story->cat_id=$cat->cat_id;
+                if($recommended==true){
+                    
+                    $story->is_recommended=true;
+                }
                 //Stops repeating stories
                 if(in_array($story,$stories) ){
                     $i--;
@@ -105,4 +116,34 @@ class stories_model extends b_model{
         shuffle($stories);
         return $stories;
     }
+    public function getSuggestedCategories($categories,$id){
+        $recommended=array();
+        foreach($categories as $cat){
+            $exploded=explode(',',$cat->related_to);
+            $recommended=  array_merge($recommended,$exploded);
+        }
+        $clear_recommended=  array_unique($recommended);
+        $this->database->query('SELECT `cat_id` FROM `likings` WHERE `user_id`='.$id.' AND (`type`=0 OR `type`=1)');
+        $unlike=$this->database->returnObject();
+        $unlike_cats=array(); //We aren't like cats
+        
+        foreach($unlike as $entry){
+            $unlike_cats[]=$entry->cat_id;
+        }
+        /**
+         * We have to convert it into an array and back
+         * so we can do the following
+         */
+        $should_display=  array_diff($clear_recommended, $unlike_cats);
+        $return=array();
+        //likings.cat_id,likings.type,likings.popularity,categories.name,categories.related_to
+        foreach($should_display as $key=>$entry){
+            $return[$key]=new stdClass();
+            $return[$key]->cat_id=$entry;
+            $return[$key]->popularity=1;//Minimum popularity for recommendations
+            $return[$key]->type=2;
+        }
+        return $return;
+    }
+   
 }
