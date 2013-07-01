@@ -10,7 +10,7 @@ class stories_model extends b_model{
      * Gets all feeds+categories the user is subscribed to
      */
     public function getSubscribedFeeds($id,$readyFeeds=''){
-        if(!is_object($readyFeeds)){
+        if(!is_array($readyFeeds)){
         $this->database->query('SELECT likings.cat_id,likings.type,likings.popularity,categories.name,categories.related_to FROM likings,categories WHERE user_id='.$id.' AND categories.id=likings.cat_id');
         $likes=$this->database->returnObject();
         }

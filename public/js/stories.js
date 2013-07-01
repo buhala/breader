@@ -24,8 +24,13 @@ $(function(){
            
        };
        ajax_setup.success=function(response){
+           if(getURLParameter('sort')=='new'){
+
            $('#stories').html("<center><b>Warning:</b> This mode provides only the newest stuff. It will show <b>less</b> results than the default mode</center>");
-           
+           }
+           else{
+               $('#stories').html("");
+           }
            $('#stories').append(response);
            $('#stories').css('padding-bottom','5px');
            $('#loadNew').css('display','block');

@@ -69,7 +69,6 @@ class stories extends b_controller{
         }
         $cats=$this->stories_model->getSuggestedCategories($feeds->categories,$_SESSION['user'][0]['id']);
         $feeds_recommended=$this->stories_model->getSubscribedFeeds($_SESSION['user'][0]['id'],$cats);
-        //var_dump($feeds);
         $popularity_recommended=$this->stories_model->getCollectivePopulation($feeds_recommended->categories);
         $rs_recommended=$this->stories_model->getStoriesPerCategory($popularity_recommended,$this->recommendedStoriesCount,$feeds_recommended->categories);
         if($sortby=='random'){
