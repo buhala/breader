@@ -80,6 +80,7 @@ class stories_model extends b_model{
     public function getRandomStories($categories,$feeds){
       //  print_r($feeds);
         $this->loadModel('rssReader_model');
+        $stories=array(); //To prevent a notice
         foreach($categories as $cat){
             $i=0;
             while($i<$cat->storyCount){
@@ -91,7 +92,13 @@ class stories_model extends b_model{
                 $this->rssReader_model->setUrl($randomFeed);
                 $story=$this->rssReader_model->getRandom();
                 $story->cat_id=$cat->cat_id;
+                //Stops repeating stories
+                if(in_array($story,$stories) ){
+                    $i--;
+                }
+                else{
                 $stories[]=$story;
+                }
                 
             }
         }
