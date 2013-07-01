@@ -5,8 +5,8 @@
         <title>bReader</title>
          <link rel="stylesheet" type="text/css" href="<?=SITE_PATH?>css/style.css" /> 
          <link rel="stylesheet" type="text/css" href="<?=SITE_PATH?>css/hack.css" /> 
-          <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    
+         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+         
     </head>
     <body>
         <div id="container">
@@ -17,10 +17,21 @@
                 <div id="page">
                     
                     <div id="leftbar">
+                        <?php
+                        /**
+                         * I honestly have no idea if I should access the value directly from the session
+                         * But, I call it in so may places that it is better this way
+                         */
+                        if($_SESSION['il']){
+                        ?>
                         <h2>Useful links</h2>
                          <a href="<?=SITE_PATH?>stories">Read stories</a><br>
                         <a href="<?=SITE_PATH?>categories/chooseCategories">Choose your subsciptions</a><br>
-                        <a href="<?=SITE_PATH?>help">Help me, I'm lost!</a>
+                        <a href="<?=SITE_PATH?>help">Help me, I'm lost!</a><br>
+                        <a href="<?=SITE_PATH?>stories/addFeed">Add your own RSS feed!</a>
+                        <?php
+                        }
+                        ?>
                         <h2>Advert</h2>
                         <img src="<?=SITE_PATH?>img/advert.jpg" class="advert">
                     </div>

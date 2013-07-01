@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `likings` (
   `type` int(1) NOT NULL,
   `popularity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
 
 --
 -- Ссхема на данните от таблица `likings`
@@ -126,13 +126,38 @@ INSERT INTO `likings` (`id`, `user_id`, `cat_id`, `type`, `popularity`) VALUES
 (13, 1, 1, 1, 0),
 (14, 1, 2, 1, 0),
 (15, 1, 3, 1, 0),
-(16, 1, 4, 1, 0),
+(16, 1, 4, 1, 1),
 (17, 1, 5, 1, 0),
-(18, 1, 6, 1, 24),
+(18, 1, 6, 1, 25),
 (19, 1, 7, 1, 1),
 (20, 1, 8, 1, 0),
 (21, 1, 9, 1, 0),
-(22, 1, 10, 1, 0);
+(22, 1, 10, 1, 0),
+(25, 2, 1, 1, 0),
+(26, 2, 2, 1, 0),
+(27, 3, 1, 1, 0),
+(28, 3, 4, 1, 1),
+(29, 3, 6, 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Структура на таблица `suggested_feeds`
+--
+
+CREATE TABLE IF NOT EXISTS `suggested_feeds` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cat_id` int(11) NOT NULL,
+  `url` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Ссхема на данните от таблица `suggested_feeds`
+--
+
+INSERT INTO `suggested_feeds` (`id`, `cat_id`, `url`) VALUES
+(1, 1, '123456778');
 
 -- --------------------------------------------------------
 
@@ -144,15 +169,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` text NOT NULL,
   `password` text NOT NULL,
+  `key` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Ссхема на данните от таблица `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`) VALUES
-(1, 'fix288@gmail.com', '7a804543393ebe525a02b1cf815532a904538a29bcff4ab17f72f1086ed3ddfc');
+INSERT INTO `users` (`id`, `username`, `password`, `key`) VALUES
+(1, 'fix288@gmail.com', '78c63340a81fade0dc8b0e2bd0bb832ade11372bcb7824117dd7363a7e9426f0', 'f7e9543ea86860d2a6658ce1cf4023a03ea2e32361ac74630b5f4290c7710c91'),
+(2, 'test@test.com', '7a804543393ebe525a02b1cf815532a904538a29bcff4ab17f72f1086ed3ddfc', ''),
+(3, 'dhd28@abv.bg', '7a804543393ebe525a02b1cf815532a904538a29bcff4ab17f72f1086ed3ddfc', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -6,6 +6,7 @@ class stories extends b_controller{
     /**
      * Shows a loading page before doing stuff -_-
      */
+    private $storiesCount=20; //TODO:User based result
     public function index(){
         $this->loadView('siteTop');
         $this->loadView('fake_stories');
@@ -16,7 +17,28 @@ class stories extends b_controller{
         }
         $this->loadView('siteFooter');
     }
-    private $storiesCount=20; //TODO:User based result
+    /**
+     * Adding a feed. 
+     */
+    public function addFeed(){
+        if($_POST){
+            $this->loadModel('feeds_model');
+            $escaped=$this->feeds_model->escapeData($_POST);
+            $response=$this->feeds_model->validateData($escaped);
+            if($response['success']==true){
+                $this->feeds_model->insertData($escaped);
+            }
+        }
+        
+        $this->loadView('siteTop');
+        $this->loadModel('categories_model');
+        $cat_list=$this->categories_model->getCategoryList();
+        if(isset($response)){
+            $cat_list['success']=$response['success'];
+        }
+        $this->loadView('addFeed',$cat_list);
+        $this->loadView('siteFooter');
+    }
     /**
      * Shows needed stories. Should be an AJAX call
      */
