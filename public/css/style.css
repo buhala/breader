@@ -11,12 +11,6 @@ body{
     display:block;
     margin:0 auto;
 }
-/*
-DO NOT TOUCH. AddThis has this weird glitch where it leaves a shit ton of space underneath each ad.
-*/
-div.atclear{
-    display:none;
-}
 #container{
 
     font-family:'Segoe UI','Helvetica','Arial',sans-serif;
