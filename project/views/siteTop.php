@@ -5,6 +5,7 @@
         <title>bReader</title>
          <link rel="stylesheet" type="text/css" href="<?=SITE_PATH?>css/style.css" /> 
           <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    
     </head>
     <body>
         <div id="container">

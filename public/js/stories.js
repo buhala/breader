@@ -16,6 +16,7 @@ $(function(){
            $('#stories').html(response);
            $('#stories').css('padding-bottom','5px');
            $('#loadNew').css('display','block');
+   //        $('head').append('      <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher: "2b149300-628b-448c-b81b-7864f56066c2", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>');
            $('body').css('cursor','auto'); //Because we want it like that
 
        };
