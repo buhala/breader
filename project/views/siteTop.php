@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html>
+	<!--
+	Like what you see?
+	Don't like what you see and want to fix it?
+	Visit http://github.com/buhala/breader and contribute something to the project
+	Or just rip stuff out.
+	I don't mind
+	-->
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>bReader</title>
