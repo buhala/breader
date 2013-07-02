@@ -1,7 +1,7 @@
 <?php
 //Entire project's config options
 $GLOBALS['config']['autoload_libraries']=array('database','hash','redirection');
-$GLOBALS['config']['autoload_controller']='login';
+$GLOBALS['config']['autoload_controller']='redirectionController';
 $GLOBALS['config']['libraries']['database']['username']='root';
 $GLOBALS['config']['libraries']['database']['password']='123456';
 $GLOBALS['config']['libraries']['database']['host']='localhost';
