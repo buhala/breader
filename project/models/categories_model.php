@@ -10,7 +10,6 @@ class categories_model extends b_model{
         $r=$this->database->query('SELECT * FROM `categories`');
         
         $rs=$this->database->returnObject();
-        echo $this->database->getError();
         return $rs;
     }
     /**
@@ -39,10 +38,12 @@ class categories_model extends b_model{
     }
     public function setNewLikes($id,$data){
        unset($data['act']);//Don't mess with it afterwards
+       $query='INSERT INTO `likings` (user_id,cat_id,type) VALUES';
        foreach($data as $key=>$one){
-           $this->database->query('INSERT INTO `likings` (user_id,cat_id,type)
-               VALUES('.$id.','.$key.',1)');
+           $query.='('.$id.','.$key.',1),';
        }
+       $final_q=  substr($query, 0,strlen($q)-1);
+       $this->database->query($final_q);
     }
     public function disableRecommendation($cat_id,$uid){
         $this->database->query('INSERT INTO `likings` (cat_id,user_id,type)

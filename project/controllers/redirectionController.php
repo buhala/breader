@@ -7,10 +7,6 @@
 class redirectionController extends b_controller{
     public function index(){
         $this->redirection->redirectIfNotLogged('login');
-        $this->redirection->redirectIfLogged('redirectionController/loggedRedirect');
-    }
-    public function loggedRedirect(){
-        $this->redirection->redirectIfNotLogged('login');
          $this->loadModel('redirection_model');
          $hasLiked=$this->redirection_model->checkForLikes($_SESSION);
          if($hasLiked==false){
@@ -20,4 +16,5 @@ class redirectionController extends b_controller{
              $this->redirection->r('stories');
          }
     }
+
 }
