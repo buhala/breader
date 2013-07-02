@@ -51,6 +51,7 @@ class stories_model extends b_model{
      */
     public function getStoriesPerCategory($collectivePopulation,$storiesCount,$categories){
         if($collectivePopulation==0){
+            
             $splitter=count($categories);
             $perCat=(int)$storiesCount/$splitter; //We don't want 12.5 stories, do we?
             foreach($categories as $key=>$value){
@@ -58,6 +59,7 @@ class stories_model extends b_model{
             }
         }
         else{
+            
             $multiplier=(int)$storiesCount/$collectivePopulation;
            // echo $multiplier;
             foreach($categories as $key=>$value){
@@ -72,7 +74,7 @@ class stories_model extends b_model{
             
             
         }
-       // var_dump($categories);
+     
             return $categories;
     }
     /**
@@ -91,6 +93,7 @@ class stories_model extends b_model{
         foreach($categories as $cat){
             $i=0;
             while($i<$cat->storyCount){
+                
                // print_r($cat);
                 $i++;
                 $randomFeed=$feeds[$cat->cat_id][array_rand($feeds[$cat->cat_id])]->link; //If this is not complicated, I don't know what is
@@ -117,6 +120,7 @@ class stories_model extends b_model{
                 }
             }
         }
+        
         shuffle($stories);
         return $stories;
     }

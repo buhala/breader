@@ -44,7 +44,7 @@ class stories extends b_controller{
         
     }
     /**
-     * Shows needed stories. Should be an AJAX call
+     * Shows needed stories. Should be an AJAX call(or call from another location)
      */
     
     

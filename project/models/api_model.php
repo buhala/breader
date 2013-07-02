@@ -19,7 +19,7 @@ class api_model extends b_model{
     }
     private function writeKey($username){
         $key=$this->hash->h(rand());
-        $this->database->query('SELECT * FROM `users` WHERE username="'.trim($username).'"');
+        $this->database->query('SELECT * FROM `users` WHERE username="'.trim($this->database->escape($username)).'"');
         $realKey=$this->database->returnObject()[0]->api_key;
         if(strlen($realKey)<1){
         $this->database->query('UPDATE users SET api_key="'.$key.'" WHERE username="'.$username.'"'); 
@@ -32,13 +32,22 @@ class api_model extends b_model{
     }
     public function getUserLikes($username){
         $this->loadModel('categories_model');
-        $this->database->query('SELECT * FROM `users` WHERE username="'.trim($username).'"');
+        $this->database->query('SELECT * FROM `users` WHERE username="'.trim($this->database->escape($username)).'"');
         if($this->database->getRows()>0){
         
         return $this->categories_model->getUserLikes($this->database->returnObject()[0]->id);
         }
         else{
         return false;
+        }
+    }
+    public function getUserId($username){
+        $this->database->query('SELECT id FROM `users` WHERE username="'.trim($this->database->escape($username)).'"');
+        if($this->database->getRows()>0){
+            return $this->database->returnObject()[0]->id;
+        }
+        else{
+            return false;
         }
     }
 }
