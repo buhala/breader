@@ -1,4 +1,7 @@
 <?php
+/**
+ * API class
+ */
 class api extends b_controller{
     /**
      * Since all the API returns is JSON, might as well set the header here
@@ -88,4 +91,5 @@ class api extends b_controller{
         }
         $this->loadView('JsonDisplay',$return);
     }
+    
 }
