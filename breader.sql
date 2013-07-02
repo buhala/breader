@@ -23,6 +23,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Структура на таблица `cache`
+--
+
+CREATE TABLE IF NOT EXISTS `cache` (
+  `url` text NOT NULL,
+  `result` longtext NOT NULL,
+  `time` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Структура на таблица `categories`
 --
 
@@ -116,28 +128,15 @@ CREATE TABLE IF NOT EXISTS `likings` (
   `type` int(1) NOT NULL,
   `popularity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Ссхема на данните от таблица `likings`
 --
 
 INSERT INTO `likings` (`id`, `user_id`, `cat_id`, `type`, `popularity`) VALUES
-(13, 1, 1, 1, 0),
-(14, 1, 2, 1, 0),
-(15, 1, 3, 1, 0),
-(16, 1, 4, 1, 1),
-(17, 1, 5, 1, 0),
-(18, 1, 6, 1, 25),
-(19, 1, 7, 1, 1),
-(20, 1, 8, 1, 0),
-(21, 1, 9, 1, 0),
-(22, 1, 10, 1, 0),
-(25, 2, 1, 1, 0),
-(26, 2, 2, 1, 0),
-(27, 3, 1, 1, 0),
-(28, 3, 4, 1, 1),
-(29, 3, 6, 1, 0);
+(1, 1, 1, 1, 1),
+(3, 1, 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -170,17 +169,20 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` text NOT NULL,
   `password` text NOT NULL,
   `key` text NOT NULL,
+  `login_key` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Ссхема на данните от таблица `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `key`) VALUES
-(1, 'fix288@gmail.com', '78c63340a81fade0dc8b0e2bd0bb832ade11372bcb7824117dd7363a7e9426f0', 'f7e9543ea86860d2a6658ce1cf4023a03ea2e32361ac74630b5f4290c7710c91'),
-(2, 'test@test.com', '7a804543393ebe525a02b1cf815532a904538a29bcff4ab17f72f1086ed3ddfc', ''),
-(3, 'dhd28@abv.bg', '7a804543393ebe525a02b1cf815532a904538a29bcff4ab17f72f1086ed3ddfc', '');
+INSERT INTO `users` (`id`, `username`, `password`, `key`, `login_key`) VALUES
+(1, 'fix288@gmail.com', '78c63340a81fade0dc8b0e2bd0bb832ade11372bcb7824117dd7363a7e9426f0', 'f7e9543ea86860d2a6658ce1cf4023a03ea2e32361ac74630b5f4290c7710c91', '848ec139d053cd00c4e77bdd00d3ee2f87ed65eb4fc84f1d8b9ea4750eaefa10'),
+(2, 'test@test.com', '7a804543393ebe525a02b1cf815532a904538a29bcff4ab17f72f1086ed3ddfc', '', ''),
+(3, 'dhd28@abv.bg', '7a804543393ebe525a02b1cf815532a904538a29bcff4ab17f72f1086ed3ddfc', '', ''),
+(4, 'georgi98bg@abv.bg', '9d235ad5b0d6d4481e39c15fff8b60a9bfba136ac9693ce898c28cf908d7b12b', '', ''),
+(5, 'avbincco@gmail.com', 'da6aae1325ee806d57fb24a6758b5734dde7e31c661c4084d784f44a60b38386', '', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
