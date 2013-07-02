@@ -20,12 +20,13 @@ class categories_model extends b_model{
     public function getUserLikes($id){
      //   echo '<pre>';
        // var_dump($_SESSION);
-        $q=$this->database->query('SELECT * FROM `likings` WHERE `user_id`='.$id.' AND type=1'); //Voluntary likes
+        $this->database->query('SELECT cat_id,popularity FROM `likings` WHERE `user_id`='.$id.' AND type=1'); //Voluntary likes
        // var_dump($q);
         $rs=$this->database->returnObject();
         //var_dump($rs);
         return $rs;
     }
+
     /**
      * 
      * @param type $id

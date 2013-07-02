@@ -11,7 +11,6 @@ class database extends b_library{
      */
     public function __construct() {
 
-        
         parent::__construct();
         if($this->autoconnect==true){
             $this->connect();           

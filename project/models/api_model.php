@@ -30,4 +30,15 @@ class api_model extends b_model{
             return $realKey;
         }
     }
+    public function getUserLikes($username){
+        $this->loadModel('categories_model');
+        $this->database->query('SELECT * FROM `users` WHERE username="'.trim($username).'"');
+        if($this->database->getRows()>0){
+        
+        return $this->categories_model->getUserLikes($this->database->returnObject()[0]->id);
+        }
+        else{
+        return false;
+        }
+    }
 }
