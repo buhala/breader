@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `likings` (
   `type` int(1) NOT NULL,
   `popularity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Ссхема на данните от таблица `likings`
@@ -170,6 +170,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` text NOT NULL,
   `key` text NOT NULL,
   `login_key` text NOT NULL,
+  `api_key` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
@@ -177,12 +178,12 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Ссхема на данните от таблица `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `key`, `login_key`) VALUES
-(1, 'fix288@gmail.com', '78c63340a81fade0dc8b0e2bd0bb832ade11372bcb7824117dd7363a7e9426f0', 'f7e9543ea86860d2a6658ce1cf4023a03ea2e32361ac74630b5f4290c7710c91', '848ec139d053cd00c4e77bdd00d3ee2f87ed65eb4fc84f1d8b9ea4750eaefa10'),
-(2, 'test@test.com', '7a804543393ebe525a02b1cf815532a904538a29bcff4ab17f72f1086ed3ddfc', '', ''),
-(3, 'dhd28@abv.bg', '7a804543393ebe525a02b1cf815532a904538a29bcff4ab17f72f1086ed3ddfc', '', ''),
-(4, 'georgi98bg@abv.bg', '9d235ad5b0d6d4481e39c15fff8b60a9bfba136ac9693ce898c28cf908d7b12b', '', ''),
-(5, 'avbincco@gmail.com', 'da6aae1325ee806d57fb24a6758b5734dde7e31c661c4084d784f44a60b38386', '', '');
+INSERT INTO `users` (`id`, `username`, `password`, `key`, `login_key`, `api_key`) VALUES
+(1, 'fix288@gmail.com', '78c63340a81fade0dc8b0e2bd0bb832ade11372bcb7824117dd7363a7e9426f0', 'f7e9543ea86860d2a6658ce1cf4023a03ea2e32361ac74630b5f4290c7710c91', '848ec139d053cd00c4e77bdd00d3ee2f87ed65eb4fc84f1d8b9ea4750eaefa10', 'cbd2da55639d6cfc79b01fca4d88fe5aa38db3401a669a255dd086003ec2f215'),
+(2, 'test@test.com', '7a804543393ebe525a02b1cf815532a904538a29bcff4ab17f72f1086ed3ddfc', '', '', ''),
+(3, 'dhd28@abv.bg', '7a804543393ebe525a02b1cf815532a904538a29bcff4ab17f72f1086ed3ddfc', '', '', ''),
+(4, 'georgi98bg@abv.bg', '9d235ad5b0d6d4481e39c15fff8b60a9bfba136ac9693ce898c28cf908d7b12b', '', '', ''),
+(5, 'avbincco@gmail.com', 'da6aae1325ee806d57fb24a6758b5734dde7e31c661c4084d784f44a60b38386', '', '', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
