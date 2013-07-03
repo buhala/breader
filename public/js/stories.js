@@ -41,9 +41,10 @@ $(function() {
         $.ajax(ajax_setup);
     }
     loadNew();
-    $('#loadNew').on('click', function() {
+   /* $('#loadNew').on('click', function() {
         $('body').css('cursor', 'wait');
         loadNew();
-    });
+    });*/
+    //Commented out because of glitchy social plugins
 
 });

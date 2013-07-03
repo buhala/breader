@@ -14,11 +14,24 @@ class stories_model extends b_model {
     public function getSubscribedFeeds($id, $readyFeeds = '') {
         if (!is_array($readyFeeds)) {
             $this->database->query('SELECT likings.cat_id,likings.type,likings.popularity,categories.name,categories.related_to FROM likings,categories WHERE user_id=' . $id . ' AND categories.id=likings.cat_id');
+            
             $likes = $this->database->returnObject();
         } else {
             $likes = $readyFeeds;
         }
-        foreach ($likes as $like) {
+        foreach ($likes as $key=>$like) {
+            $q=$this->database->query('SELECT popularity FROM likings WHERE `cat_id`='.$like->cat_id);
+            
+            $others=$this->database->returnObject();
+           // var_dump($others);
+            $collectivePop=0;
+            if(count($others)>0){
+            foreach($others as $other){
+                $collectivePop=$collectivePop+$other->popularity;
+            }
+            $addition=$collectivePop/count($others)/5;//5 times less affection
+            $likes[$key]->popularity=$likes[$key]->popularity+$addition;
+            }
             $this->database->query('SELECT * FROM feeds WHERE cat_id=' . $like->cat_id);
             $feeds[$like->cat_id] = $this->database->returnObject();
         }
@@ -100,6 +113,7 @@ class stories_model extends b_model {
                 $story = $this->rssReader_model->getRandom();
                 if (is_object($story)) {
                     $story->cat_id = $cat->cat_id;
+                    $story->cat_name=$cat->name;
                     if ($recommended == true) {
 
                         $story->is_recommended = true;

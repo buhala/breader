@@ -2,10 +2,19 @@
 
 <?php
 foreach ($data as $entry) {
+     $type = (array) $entry->is_recommended;
+     if($type[0]!="1"){
+         $cat='-'.$entry->cat_name;
+     }
+     else{
+         $cat='';
+     }
     //It is with GET so special chars don't glitch stuff
-    echo '<h3><a href="' . SITE_PATH . 'link/visit/' . $entry->cat_id . '?url=' . urlencode($entry->link) . '">' . $entry->title . '</a></h3>' . strip_tags(substr($entry->description, 0, 140));
-    //**NO** Idea why this is like that
-    $type = (array) $entry->is_recommended;
+    echo '<h3><a href="' . SITE_PATH . 'link/visit/' . $entry->cat_id . '?url=' . urlencode($entry->link) . '">' . $entry->title . '</a>'.$cat.'</h3>' . strip_tags(substr($entry->description, 0, 140));
+    
+//**NO** Idea why this is like that
+   
+    
     if ($type[0] == "1") {
         echo '<br><small>This is a recommended story.<a href="#" class="unsubscribe" id="' . $entry->cat_id . '" ><b>Click here to disable this type of stories</b></small>';
     }

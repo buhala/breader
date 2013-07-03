@@ -44,8 +44,11 @@ class api extends b_controller {
      * Shows the user likes
      */
     public function getUserLikes($username) {
+        //Fetch the needed model
         $this->loadModel('api_model');
+        //Get the likes
         $rs = $this->api_model->getUserLikes($username);
+        //If it's all great, load the view, if not, change data and then load the view
         if ($rs == false) {
             $rs['success'] = false;
             $rs['error'] = 'UNEXSISTENT_USER';
