@@ -1,21 +1,23 @@
 <?php
+
 /**
  * Database handling
  */
-class database extends b_library{
+class database extends b_library {
 
-    
-    protected $host,$username,$password,$query,$db,$ref,$autoconnect;
+    protected $host, $username, $password, $query, $db, $ref, $autoconnect;
+
     /**
      * Connects to database if autoconnect
      */
     public function __construct() {
 
         parent::__construct();
-        if($this->autoconnect==true){
-            $this->connect();           
+        if ($this->autoconnect == true) {
+            $this->connect();
         }
     }
+
     /**
      * 
      * @return type
@@ -25,6 +27,7 @@ class database extends b_library{
         $this->ref = mysqli_connect($this->host, $this->username, $this->password, $this->db) or die('Check MySQL Connection');
         return $this->ref; //For development purposes;
     }
+
     /**
      * 
      * @param type $string
@@ -33,10 +36,11 @@ class database extends b_library{
      */
     public function escape($string) {
         $this->checkConnection();
-        $rs = mysqli_real_escape_string($this->ref,$string);
+        $rs = mysqli_real_escape_string($this->ref, $string);
         //echo "\n\n\n\n\n".'RESULT:'.$rs;
         return $rs;
     }
+
     /**
      * 
      * @return type
@@ -46,62 +50,58 @@ class database extends b_library{
         $this->checkConnection();
         return mysqli_error($this->ref);
     }
+
     /**
      * 
      * @param type $query
      * @return type
      * Executes a query
      */
-
     public function query($query) {
-       // $query=(String)$query; //I have no idea why but sometimes this gets an object attached to it
+        // $query=(String)$query; //I have no idea why but sometimes this gets an object attached to it
         //echo "\n\n\n QUERY $query \n\n\n";
         $this->checkConnection();
-       // echo '<pre>';
+        // echo '<pre>';
         //var_dump($query);
-        
-        $this->query=$this->ref->query($query);
+
+        $this->query = $this->ref->query($query);
         return $this->query;
     }
+
     /**
      * 
      * @param type $query
      * @return type
      * Gets the num_rows;
      */
-    public function getRows($query=null) {
+    public function getRows($query = null) {
         $this->checkConnection();
-        if($query==null){
-            $result=$this->query;
-            
-        }
-        elseif(is_object($query)){
-            $result=$query;
-            
-        }
-        else{
+        if ($query == null) {
+            $result = $this->query;
+        } elseif (is_object($query)) {
+            $result = $query;
+        } else {
 
-            $result=$this->query($query);
+            $result = $this->query($query);
         }
         //echo "\n\n\nNum rows for query: $query are".$result->num_rows."\n\n\n";
         //echo 'Num rows are '.$result->num_rows;
         return $result->num_rows;
     }
+
     /**
      * Returns an array
      */
-    public function returnArray($query=null) {
+    public function returnArray($query = null) {
         $this->checkConnection();
-        if($query==null){
-            $result=$this->query;
+        if ($query == null) {
+            $result = $this->query;
+        } elseif (is_object($query)) {
+            $result = $query;
+        } else {
+            $result = $this->query($query);
         }
-        elseif(is_object($query)){
-            $result=$query;
-        }
-        else{
-            $result=$this->query($query);
-        }
-		
+
         if (@mysqli_num_rows($result) != 0) {
             $arr = array();
             while ($row = $result->fetch_assoc()) {
@@ -113,36 +113,36 @@ class database extends b_library{
         //echo "";
         return $arr;
     }
+
     /**
      * 
      * @param type $query
      * @return array
      * Returns an array with objects
      */
-    public function returnObject($query=null) {
+    public function returnObject($query = null) {
         $this->checkConnection();
-        if($query==null){
-            $result=$this->query;
+        if ($query == null) {
+            $result = $this->query;
+        } elseif (is_object($query)) {
+            $result = $query;
+        } else {
+            $result = $this->query($query);
         }
-        elseif(is_object($query)){
-            $result=$query;
-        }
-        else{
-            $result=$this->query($query);
-        }
-        
+
         if (@mysqli_num_rows($result) != 0) {
             $arr = array();
             while ($row = $result->fetch_object()) {
                 $arr[] = $row;
             }
         } else {
-            
+
             $arr = array();
         }
         //echo "";
         return $arr;
     }
+
     /**
      * Reconnects if need be
      */
@@ -151,6 +151,7 @@ class database extends b_library{
             @$this->connect();
         }
     }
+
     /**
      * 
      * @return type
@@ -159,6 +160,7 @@ class database extends b_library{
     public function disconnect() {
         return @mysqli_close($this->ref);
     }
+
     /**
      * Disconnects on exit
      */

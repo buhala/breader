@@ -1,15 +1,13 @@
 <h2>Read some of our articles</h2>
 <ol>
-<?php
-
-foreach($data as $entry){
-    echo '<li><a href="'.SITE_PATH.'help/viewArc/'.$entry->id.'"><u>'.$entry->topic.'</u></a></li>';
-}
-
-?>
+    <?php
+    foreach ($data as $entry) {
+        echo '<li><a href="' . SITE_PATH . 'help/viewArc/' . $entry->id . '"><u>' . $entry->topic . '</u></a></li>';
+    }
+    ?>
 </ol>
 <h2>Contact support</h2>
-<form method="post" action="<?=SITE_PATH?>help/submitRequest">
+<form method="post" action="<?= SITE_PATH ?>help/submitRequest">
     <table>
         <tr>
             <td>Email:</td>
