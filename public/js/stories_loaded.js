@@ -7,7 +7,7 @@ $(function() {
     $('.unsubscribe').on('click', function(eventData) {
         console.log(this.id);
         console.log("unsubscribing...");
-        var site_path = 'http://breader.localhost/';
+        var site_path = 'http://local.breader.eu/';
         var ajax_setup = {};
         ajax_setup.url = site_path + 'categories/deleteRecommendation/' + this.id;
         ajax_setup.dataType = 'html';

@@ -1,5 +1,5 @@
 $(function() {
-    var site_path = 'http://breader.localhost/';
+    var site_path = 'http://local.breader.eu/';
     $('.register').on('click', function() {
         $('#login_form').hide();
         $('#forgot_form').hide();

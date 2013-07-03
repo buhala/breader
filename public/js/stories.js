@@ -7,7 +7,7 @@ $(function() {
 
     function loadNew() {
         console.log("loading stories");
-        var site_path = 'http://breader.localhost/';
+        var site_path = 'http://local.breader.eu/';
         var ajax_setup = {};
         if (getURLParameter('sort') == 'new') {
             appender = "new";
