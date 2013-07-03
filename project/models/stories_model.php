@@ -14,23 +14,23 @@ class stories_model extends b_model {
     public function getSubscribedFeeds($id, $readyFeeds = '') {
         if (!is_array($readyFeeds)) {
             $this->database->query('SELECT likings.cat_id,likings.type,likings.popularity,categories.name,categories.related_to FROM likings,categories WHERE user_id=' . $id . ' AND categories.id=likings.cat_id');
-            
+
             $likes = $this->database->returnObject();
         } else {
             $likes = $readyFeeds;
         }
-        foreach ($likes as $key=>$like) {
-            $q=$this->database->query('SELECT popularity FROM likings WHERE `cat_id`='.$like->cat_id);
-            
-            $others=$this->database->returnObject();
-           // var_dump($others);
-            $collectivePop=0;
-            if(count($others)>0){
-            foreach($others as $other){
-                $collectivePop=$collectivePop+$other->popularity;
-            }
-            $addition=$collectivePop/count($others)/5;//5 times less affection
-            $likes[$key]->popularity=$likes[$key]->popularity+$addition;
+        foreach ($likes as $key => $like) {
+            $q = $this->database->query('SELECT popularity FROM likings WHERE `cat_id`=' . $like->cat_id);
+
+            $others = $this->database->returnObject();
+            // var_dump($others);
+            $collectivePop = 0;
+            if (count($others) > 0) {
+                foreach ($others as $other) {
+                    $collectivePop = $collectivePop + $other->popularity;
+                }
+                $addition = $collectivePop / count($others) / 5; //5 times less affection
+                $likes[$key]->popularity = $likes[$key]->popularity + $addition;
             }
             $this->database->query('SELECT * FROM feeds WHERE cat_id=' . $like->cat_id);
             $feeds[$like->cat_id] = $this->database->returnObject();
@@ -95,7 +95,7 @@ class stories_model extends b_model {
      * @return type
      * Returns random stories from subscribed categories
      */
-    public function getRandomStories($categories, $feeds, $recommended = false) {
+    public function getRandomStories($categories, $feeds, $userid, $recommended = false) {
         //This is used so we can return the value
         //  print_r($feeds);
         $this->loadModel('rssReader_model');
@@ -113,17 +113,20 @@ class stories_model extends b_model {
                 $story = $this->rssReader_model->getRandom();
                 if (is_object($story)) {
                     $story->cat_id = $cat->cat_id;
-                    $story->cat_name=$cat->name;
+                    $story->cat_name = $cat->name;
                     if ($recommended == true) {
 
                         $story->is_recommended = true;
                     }
+                    //Don't show a story user has already read
+                    $this->database->query('SELECT id FROM clicks WHERE user_id='.$userid.' AND url="'.$this->database->escape($story->link).'" AND time>'.time()-7200);
                     //Stops repeating stories
-                    if (in_array($story, $stories)) {
+                    if (in_array($story, $stories) && $this->database->getRows()<1) {
                         $i--;
                     } else {
                         $stories[] = $story;
                     }
+                    
                 } else {
                     $i--;
                 }

@@ -64,6 +64,28 @@ INSERT INTO `categories` (`id`, `name`, `related_to`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура на таблица `clicks`
+--
+
+CREATE TABLE IF NOT EXISTS `clicks` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `url` text NOT NULL,
+  `time` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Ссхема на данните от таблица `clicks`
+--
+
+INSERT INTO `clicks` (`id`, `user_id`, `url`, `time`) VALUES
+(1, 1, 'http://www.thetimes.co.uk/tto/news/world/asia/article3804094.ece', 1372862450),
+(2, 1, 'http://rss.cnn.com/~r/rss/edition_europe/~3/As1SEZjDhuU/art-of-movement-big-wave-maya-gabeira.cnn.html', 1372862861);
+
+-- --------------------------------------------------------
+
+--
 -- Структура на таблица `feeds`
 --
 
@@ -118,6 +140,26 @@ INSERT INTO `feeds` (`id`, `cat_id`, `link`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура на таблица `help`
+--
+
+CREATE TABLE IF NOT EXISTS `help` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `topic` text NOT NULL,
+  `content` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Ссхема на данните от таблица `help`
+--
+
+INSERT INTO `help` (`id`, `topic`, `content`) VALUES
+(1, 'What is bReader?', 'bReader is an advanced news source. Imagine a newspaper tailored to <b>you</b>. bReader is the same thing-but free! \n\nYou can choose news, get recommendations. The more you read your news, the more you get from them. You also get related news! Why not try it? Who knows, you may use it to <b>get informed better</b>!');
+
+-- --------------------------------------------------------
+
+--
 -- Структура на таблица `likings`
 --
 
@@ -128,15 +170,14 @@ CREATE TABLE IF NOT EXISTS `likings` (
   `type` int(1) NOT NULL,
   `popularity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Ссхема на данните от таблица `likings`
 --
 
 INSERT INTO `likings` (`id`, `user_id`, `cat_id`, `type`, `popularity`) VALUES
-(1, 1, 1, 1, 1),
-(3, 1, 3, 1, 1);
+(4, 1, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -149,14 +190,7 @@ CREATE TABLE IF NOT EXISTS `suggested_feeds` (
   `cat_id` int(11) NOT NULL,
   `url` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Ссхема на данните от таблица `suggested_feeds`
---
-
-INSERT INTO `suggested_feeds` (`id`, `cat_id`, `url`) VALUES
-(1, 1, '123456778');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -172,18 +206,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `login_key` text NOT NULL,
   `api_key` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Ссхема на данните от таблица `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `key`, `login_key`, `api_key`) VALUES
-(1, 'fix288@gmail.com', '78c63340a81fade0dc8b0e2bd0bb832ade11372bcb7824117dd7363a7e9426f0', 'f7e9543ea86860d2a6658ce1cf4023a03ea2e32361ac74630b5f4290c7710c91', '848ec139d053cd00c4e77bdd00d3ee2f87ed65eb4fc84f1d8b9ea4750eaefa10', 'cbd2da55639d6cfc79b01fca4d88fe5aa38db3401a669a255dd086003ec2f215'),
-(2, 'test@test.com', '7a804543393ebe525a02b1cf815532a904538a29bcff4ab17f72f1086ed3ddfc', '', '', ''),
-(3, 'dhd28@abv.bg', '7a804543393ebe525a02b1cf815532a904538a29bcff4ab17f72f1086ed3ddfc', '', '', ''),
-(4, 'georgi98bg@abv.bg', '9d235ad5b0d6d4481e39c15fff8b60a9bfba136ac9693ce898c28cf908d7b12b', '', '', ''),
-(5, 'avbincco@gmail.com', 'da6aae1325ee806d57fb24a6758b5734dde7e31c661c4084d784f44a60b38386', '', '', '');
+(1, 'fix288@gmail.com', '7a804543393ebe525a02b1cf815532a904538a29bcff4ab17f72f1086ed3ddfc', '', '', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

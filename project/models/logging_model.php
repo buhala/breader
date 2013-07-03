@@ -19,5 +19,12 @@ class logging_model extends b_model {
         }
         $this->database->query('UPDATE likings SET popularity=popularity+1 WHERE user_id=' . $id . ' AND cat_id=' . $cat);
     }
+    public function logClick($url,$id){
+        $this->database->query('INSERT INTO clicks (url,user_id,time)
+            VALUES("'.$this->database->escape($url).'",'.$id.','.time().')');
+        echo 'INSERT INTO clicks (url,user_id,time)
+            VALUES("'.$this->database->escape($url).'",'.$id.','.time().')';
+        echo $this->database->getError();
+    }
 
 }

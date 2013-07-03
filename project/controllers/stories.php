@@ -63,7 +63,7 @@ class stories extends b_controller {
         $rs = $this->stories_model->getStoriesPerCategory($popularity, $this->storiesCount, $feeds->categories);
         // var_dump($rs);
         if ($sortby == 'random') {
-            $final = $this->stories_model->getRandomStories($rs, $feeds->feeds);
+            $final = $this->stories_model->getRandomStories($rs, $feeds->feeds,$_SESSION['user'][0]['id']);
         } elseif ($sortby == 'new') {
             $final = $this->stories_model->getNewestStories($rs, $feeds->feeds);
         }
@@ -72,7 +72,7 @@ class stories extends b_controller {
         $popularity_recommended = $this->stories_model->getCollectivePopulation($feeds_recommended->categories);
         $rs_recommended = $this->stories_model->getStoriesPerCategory($popularity_recommended, $this->recommendedStoriesCount, $feeds_recommended->categories);
         if ($sortby == 'random') {
-            $final_recommended = $this->stories_model->getRandomStories($rs_recommended, $feeds_recommended->feeds, true); //We want to show the user a notice this story is a recommendation
+            $final_recommended = $this->stories_model->getRandomStories($rs_recommended, $feeds_recommended->feeds,$_SESSION['user'][0]['id'], true); //We want to show the user a notice this story is a recommendation
         } elseif ($sortby == 'new') {
             $final_recommended = $this->stories_model->getNewestStories($rs_recommended, $feeds_recommended->feeds, true); //We want to show the user a notice this story is a recommendation
         }
