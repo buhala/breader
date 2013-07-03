@@ -9,7 +9,7 @@
     </head>
     <body>
         <div id="content">
-            <div id='login_form' style='display:block'>
+            <form id='login_form' style='display:block'>
                 <h1>Login to bReader</h1>
                 <input type="text" name="uname" placeholder="Email" class="input" id="username_login"/>
                 <input type="password" name="pass" placeholder="Password" class="input" id="password_login">
@@ -21,8 +21,8 @@
                     <input type="submit" name="act" value="Login" class="button" id="submit_login">
                     or <a href="#" class='register'>Register</a>
                 </div>
-            </div>
-            <div id='register_form' style='display:none'>
+            </form>
+            <form id='register_form' style='display:none'>
                 <h1>Register for bReader</h1>
 
                 <input type='text' name='uname' placeholder='Email' class='input' id="username_register">
@@ -32,8 +32,8 @@
                     <input type='submit' name='act' value='Register' class='button' id="register_submit">
                     or <a href="#" class='login'>Login</a>
                 </div>
-            </div>
-            <div id='forgot_form' style='display:none'>
+            </form>
+            <form id='forgot_form' style='display:none'>
                 <h1>Forgot password?</h1>
                 <input type='text' name='uname' placeholder='Email...' class='input' id="forgot_username">
                 <div class="actions">
@@ -41,7 +41,7 @@
                     or <a href="#" class='login' >Login</a>
                 </div>
 
-            </div>
+            </form>
         </div>
     </body>
 </html>

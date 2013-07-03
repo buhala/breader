@@ -15,7 +15,8 @@ $(function() {
         $('#register_form').hide();
         $('#forgot_form').show();
     });
-    $('#submit_login').on('click', function() {
+    $('#login_form').on('submit', function() {
+        $('body').css('pointer','progress');
         var ajax_setup = {};
         ajax_setup.url = 'login/ajaxLogin';
         ajax_setup.type = 'post';
@@ -40,8 +41,11 @@ $(function() {
             }
         };
         $.ajax(ajax_setup);
+        $('body').css('pointer','auto');
+        return false;
     });
-    $('#register_submit').on('click', function() {
+    $('#register_form').on('submit', function() {
+        $('body').css('pointer','progress');
         var ajax_setup = {};
         ajax_setup.url = 'login/ajaxRegister';
         ajax_setup.type = 'post';
@@ -77,9 +81,11 @@ $(function() {
             }
         };
         $.ajax(ajax_setup);
-
+        $('body').css('pointer','auto');
+        return false;
     });
-    $('#forgot_submit').on('click', function() {
+    $('#forgot_form').on('click', function() {
+        $('body').css('pointer','progress');
         var ajax_setup = {};
         ajax_setup.url = 'login/ajaxForgotPassword';
         ajax_setup.type = 'post';
@@ -102,6 +108,7 @@ $(function() {
             }
         };
         $.ajax(ajax_setup);
-
+        $('body').css('pointer','auto');
+        return false;
     });
 });
