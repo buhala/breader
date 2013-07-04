@@ -1,5 +1,5 @@
 <script src="<?=SITE_PATH?>js/categories.js"></script>
-<div id="profilepicker"><h2>Choose profile</h2><form id="profilepicker"><select id="profile"></select></form></div>    
+<div id="profilepicker" ><h2>Choose profile</h2><form  ><select id="profile" disabled><option id="loading">Loading...</option></select></form></div>    
 <div id="savenew" style="display:none"><b>Warning:</b>You cannot undo this action<br><input id="profileName" placeholder="Enter profile name..."><br><button id="save">Save changes</button></div>
 <div style="padding-bottom:600px"><h2>Choose categories to subscribe to</h2><form method="post" action="<?=SITE_PATH?>categories/change">
 <?php

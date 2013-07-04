@@ -5,15 +5,17 @@ $(function() {
     ajax_setup.dataType = 'json';
     ajax_setup.cache = false;
     ajax_setup.success = function(result) {
+         $('select#profile option').remove();
         $("#profile").append(new Option("Current profile(not saved)", "cur"));
         i = 0;
         while (i < result.length) {
             $("#profile").append(new Option(result[i].name, result[i].id));
-
+            
             i++;
 
         }
         $("#profile").append(new Option("New...", "new"));
+        $('#profile').prop('disabled',false);
     };
 
     ajax_setup.error = function(result) {
@@ -75,7 +77,8 @@ $(function() {
         ajax_setup.data.categories=categories;
         ajax_setup.data.profileName=$('#profileName').val();
         ajax_setup.success = function(result) {
-            alert('Added the new profile!');
+            alert('Added the new profile! You can now select it from the list');
+            location.reload(); 
         };
 
         ajax_setup.error = function(result) {
