@@ -1,7 +1,9 @@
+<script src="<?=SITE_PATH?>js/categories.js"></script>
+<div id="profilepicker"><h2>Choose profile</h2><form id="profilepicker"><select id="profile"></select></form></div>    
+<div id="savenew" style="display:none"><b>Warning:</b>You cannot undo this action<br><input id="profileName" placeholder="Enter profile name..."><br><button id="save">Save changes</button></div>
+<div style="padding-bottom:600px"><h2>Choose categories to subscribe to</h2><form method="post" action="<?=SITE_PATH?>categories/change">
 <?php
-
-echo '<div style="padding-bottom:600px"><h2>Choose categories to subscribe to</h2><form method="post" action="' . SITE_PATH . 'categories/change">';
-//Lists alll categories
+        //Lists alll categories
 foreach ($data['categories'] as $category) {
     $attr = '';
     $category->rate=0;
@@ -12,6 +14,6 @@ foreach ($data['categories'] as $category) {
             $category->rate=$like->popularity;
         }
     }
-    echo '<input type="checkbox" name="' . $category->id . '" value="1" ' . $attr . '>' . $category->name . '-'.$category->rate.' LikeRank<br>';
+    echo '<input type="checkbox" id="'.$category->id.'" class="selector" name="' . $category->id . '" value="1" ' . $attr . '>' . $category->name . '-'.$category->rate.' LikeRank<br>';
 }
-echo '<input type="submit" name="act" value="Save changes"></form></div>';
+echo '<input type="submit" name="act" value="Choose categories"></form></div>';

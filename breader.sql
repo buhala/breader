@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `clicks` (
   `url` text NOT NULL,
   `time` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Ссхема на данните от таблица `clicks`
@@ -81,7 +81,12 @@ CREATE TABLE IF NOT EXISTS `clicks` (
 
 INSERT INTO `clicks` (`id`, `user_id`, `url`, `time`) VALUES
 (1, 1, 'http://www.thetimes.co.uk/tto/news/world/asia/article3804094.ece', 1372862450),
-(2, 1, 'http://rss.cnn.com/~r/rss/edition_europe/~3/As1SEZjDhuU/art-of-movement-big-wave-maya-gabeira.cnn.html', 1372862861);
+(2, 1, 'http://rss.cnn.com/~r/rss/edition_europe/~3/As1SEZjDhuU/art-of-movement-big-wave-maya-gabeira.cnn.html', 1372862861),
+(3, 1, 'http://www.bbc.co.uk/news/world-latin-america-23141056#sa-ns_mchannel=rss&ns_source=PublicRSS20-sa', 1372869451),
+(4, 1, 'http://feeds.reuters.com/~r/Reuters/worldNews/~3/tia8zCc1llU/story01.htm', 1372869821),
+(5, 1, 'http://www.bbc.co.uk/news/business-23143585#sa-ns_mchannel=rss&ns_source=PublicRSS20-sa', 1372879103),
+(6, 1, 'http://www.bbc.co.uk/news/business-23143585#sa-ns_mchannel=rss&ns_source=PublicRSS20-sa', 1372879103),
+(7, 1, 'http://www.thetimes.co.uk/tto/news/world/europe/article3805206.ece', 1372881885);
 
 -- --------------------------------------------------------
 
@@ -170,14 +175,47 @@ CREATE TABLE IF NOT EXISTS `likings` (
   `type` int(1) NOT NULL,
   `popularity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Ссхема на данните от таблица `likings`
 --
 
 INSERT INTO `likings` (`id`, `user_id`, `cat_id`, `type`, `popularity`) VALUES
-(4, 1, 1, 1, 0);
+(5, 3, 4, 1, 0),
+(17, 1, 1, 1, 0),
+(18, 1, 2, 1, 0),
+(19, 1, 3, 1, 0),
+(20, 1, 4, 1, 0),
+(21, 1, 5, 1, 0),
+(22, 1, 6, 1, 0),
+(23, 1, 7, 1, 0),
+(24, 1, 8, 1, 0),
+(25, 1, 9, 1, 0),
+(26, 1, 10, 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Структура на таблица `profiles`
+--
+
+CREATE TABLE IF NOT EXISTS `profiles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `cats` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Ссхема на данните от таблица `profiles`
+--
+
+INSERT INTO `profiles` (`id`, `user_id`, `name`, `cats`) VALUES
+(1, 1, 'Test', '1,5,3,2'),
+(2, 1, 'Test1', '7,1,5,3,2'),
+(3, 1, 'TOASTER', '1,2,3,4,5');
 
 -- --------------------------------------------------------
 
@@ -206,14 +244,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `login_key` text NOT NULL,
   `api_key` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Ссхема на данните от таблица `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `key`, `login_key`, `api_key`) VALUES
-(1, 'fix288@gmail.com', '7a804543393ebe525a02b1cf815532a904538a29bcff4ab17f72f1086ed3ddfc', '', '', '');
+(1, 'fix288@gmail.com', '7a804543393ebe525a02b1cf815532a904538a29bcff4ab17f72f1086ed3ddfc', '', '', ''),
+(2, 'avincco@gmail.com', '61525198d92b31754800e9509d83f0dd3fc792a7b411cffa8217de231199580d', '', '', ''),
+(3, 'avbincco@gmail.com', '61525198d92b31754800e9509d83f0dd3fc792a7b411cffa8217de231199580d', '', '', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
