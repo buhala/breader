@@ -28,6 +28,22 @@ class user extends b_controller{
         }
         $this->loadView('siteFooter');
     }
+    public function doEmailChange(){
+        $this->loadView('siteTop');
+        $this->redirection->redirectIfNotLogged('login');
+        $this->loadModel('user_model');
+        $rs=$this->user_model->validateEmail($_POST['email']);
+        if($rs['success']==true){
+            $final=$this->user_model->changeEmail($_POST['email'],$_SESSION['user'][0]['id']);
+            $final['type']=2;
+            $this->loadView('changeDetails',$final);
+        }
+        else{
+            $rs['type']=2;
+            $this->loadView('changeDetails',$rs);
+        }
+        
+    }
     
     
 }

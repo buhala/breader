@@ -29,5 +29,21 @@ class user_model extends b_model {
         }
         return $return;
     }
+    public function validateEmail($email){
+        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+            $return['success']=true;
+        }
+        else{
+            $return['success']=false;
+            $return['error']='INVALID_MAIL';
+        }
+        return $return;
+        
+    }
+    public function changeEmail($email,$id){
+        $this->database->query('UPDATE users SET username="'.$this->database->escape($email).'" WHERE id='.$id);
+        $return['success']=true;
+        return $return;
+    }
 
 }
