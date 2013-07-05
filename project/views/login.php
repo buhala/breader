@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+    <!-- 
+    Inspired by http://avroraos.herokuapp.com/ . Thanks for the permission :)
+    -->
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title></title>
