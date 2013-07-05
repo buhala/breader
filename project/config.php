@@ -15,6 +15,6 @@ $GLOBALS['config']['system']['email']='support@breader.me';
 $GLOBALS['config']['extra']['github']['username']='buhala';
 $GLOBALS['config']['extra']['github']['project']='breader';
 $GLOBALS['config']['extra']['api']['token']='someapitoken';
-
+$GLOBALS['config']['extra']['lang']='en';
 define(SITE_PATH,'http://local.breader.eu/');
 //remember to edit the .js file at public (stories.js), also home.js includes some of it.

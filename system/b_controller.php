@@ -32,7 +32,7 @@ class b_controller{
         
         global $data;
         $data=$input;
-        include_once PROJECT_DIR.'views/'.$view.'.php';
+        include_once PROJECT_DIR.'views/'.$GLOBALS['config']['extra']['lang'].'/'.$view.'.php';
         
     }
 }
