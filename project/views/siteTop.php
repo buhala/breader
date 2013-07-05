@@ -33,18 +33,23 @@
                         if ($_SESSION['il']) {
                             ?>
                             <h2>Navigation</h2>
-                            
+                            <h3>Get informed</h3>
                             <a href="<?= SITE_PATH ?>stories">Read stories</a><br>
                             <a href="<?= SITE_PATH ?>stories?sort=new">Read <b>the newest</b> stories</a><br>
+							<h3>Customize your experience</h3>
                             <a href="<?= SITE_PATH ?>categories/chooseCategories">Choose your subsciptions</a><br>
+							<a href="<?= SITE_PATH ?>user/changeDetails">Change your details</a>
+							<h3>Other stuff</h3>
                             <a href="<?=SITE_PATH?>commits">Show changes to the site</a><br>
                             <a href="<?= SITE_PATH ?>help">Help me, I'm lost!</a><br>
                             <a href="<?= SITE_PATH ?>stories/addFeed">Add your own RSS feed!</a><br>
-                            <a href="<?= SITE_PATH ?>user/changeDetails">Change your details</a>
+
                             <?php
                         }
                         ?>
                         <h2>Advert</h2>
                         <img src="<?= SITE_PATH ?>img/advert.jpg" class="advert">
+						<h2>Hosted by</h2>
+						<img src="<?=SITE_PATH?>img/icn.png">
                     </div>
                     <div id="rightbar">

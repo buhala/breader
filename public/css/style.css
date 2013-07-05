@@ -23,10 +23,11 @@ body{
     
     line-height: 100%;
     margin:0;
-    background-color:#222222;
+    background-color:black;
     display:block;
     color:#a2a2a2;
     font-size: 17pt;
+	padding-bottom:2px;
 }
 #fakemenu{
     width:90%;
