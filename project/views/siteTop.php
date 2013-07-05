@@ -10,8 +10,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>bReader</title>
+
         <link rel="stylesheet" type="text/css" href="<?= SITE_PATH ?>css/style.css" /> 
         <link rel="stylesheet" type="text/css" href="<?= SITE_PATH ?>css/hack.css" /> 
+                <?php
+        //New design, highly experimental, has a lot of bugs, but is overall better
+        if (isset($_GET['betterdesign'])) {
+            ?> 
+            <link rel="stylesheet" type="text/css" href="<?= SITE_PATH ?>css/newdesign.css" /> 
+
+            <?php
+        }
+        ?>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 
     </head>
