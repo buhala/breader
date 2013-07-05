@@ -5,6 +5,10 @@ $(function() {
         $('#forgot_form').hide();
         $('#register_form').show();
     });
+    $('.social').on('click', function() {
+        $('#login_form').hide();
+        $('#social_form').show();
+    });
     $('.login').on('click', function() {
         $('#register_form').hide();
         $('#forgot_form').hide();
@@ -84,7 +88,7 @@ $(function() {
         $('body').css('pointer','auto');
         return false;
     });
-    $('#forgot_form').on('click', function() {
+    $('#forgot_form').on('submit', function() {
         $('body').css('pointer','progress');
         var ajax_setup = {};
         ajax_setup.url = 'login/ajaxForgotPassword';

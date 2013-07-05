@@ -23,8 +23,9 @@ class forgot_model extends b_model {
         return $return;
     }
 
-    public function checkKey($data) {
-        $this->database->query('SELECT * FROM users WHERE `key`="' . $key . '"');
+    public function checkKey($key) {
+        $this->database->query('SELECT * FROM users WHERE `key`="' . $key['key'] . '" AND password!="socialAccount"');
+      //  echo 'SELECT * FROM users WHERE `key`="' . $key['key'] . '" AND password!="socialAccount"';
         if ($this->database->getRows() > 0) {
             $return['success'] = true;
         } else {

@@ -96,4 +96,17 @@ class api extends b_controller {
         $this->loadView('JsonDisplay', $return);
     }
 
+    public function tokenLogin() {
+        $token = $_POST['token'];
+        $this->loadModel('api_model');
+        $email = $this->api_model->getEmail($token);
+        echo 'Email:'.$email;
+        $hasAccount = $this->api_model->checkSocialAccount($email);
+        if ($hasAccount == false) {
+            $this->api_model->tokenRegister($email);
+        }
+        $this->api_model->tokenLogin($email,true);
+        $this->redirection->r('redirectionController');
+    }
+
 }

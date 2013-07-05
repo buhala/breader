@@ -77,17 +77,20 @@ Password:' . $_POST['password'] . '
         if ($rs['success'] == false) {
             $this->loadView('JsonDisplay', $rs);
         } else {
-
+             $rs=$this->forgot_model->doChange($escapedData);
+            $mailText='Activate your new password at '.SITE_PATH.'login/restorePass/'.$rs['key'];
             $this->loadLibrary('mailer');
-            $mailText = 'Welcome to bReader! 
-Here are your user details to get you started! 
-Username:' . $_POST['username'] . '
-Password:' . $_POST['password'] . '
-(note:your password is hashed. This is the last time we have it in plain text)';
-            $this->mailer->sendMail('Welcome to bReader!', $GLOBALS['config']['system']['email'], $_POST['username'], $mailText);
+            $this->mailer->sendMail('bReader password reset',$GLOBALS['config']['system']['email'],$_POST['username'],$mailText);
+             $this->loadView('JsonDisplay',$rs);
+
         }
     }
 
+    /**
+     * 
+     * @param type $key
+     * Restore the password
+     */
     public function restorePass($key) {
         $this->loadView('siteTop');
         $this->loadModel('forgot_model');
@@ -98,6 +101,11 @@ Password:' . $_POST['password'] . '
         $this->loadView('siteFooter');
     }
 
+    /**
+     * 
+     * @param type $key
+     * Change the pass
+     */
     public function newPass($key) {
         $this->loadView('siteTop'); //So we load nessesary JS
         $this->loadModel('forgot_model');
@@ -105,6 +113,54 @@ Password:' . $_POST['password'] . '
         $this->loadView('changed', $rs);
     }
 
+    public function socialLogin() {
+        $this->loadView('siteTop');
+        ?>
+        <script type="text/javascript">
+            (function() {
+                if (typeof window.janrain !== 'object')
+                    window.janrain = {};
+                if (typeof window.janrain.settings !== 'object')
+                    window.janrain.settings = {};
+
+                janrain.settings.tokenUrl = 'http://local.breader.eu/api/tokenLogin';
+
+                function isReady() {
+                    janrain.ready = true;
+                }
+                ;
+                if (document.addEventListener) {
+                    document.addEventListener("DOMContentLoaded", isReady, false);
+                } else {
+                    window.attachEvent('onload', isReady);
+                }
+
+                var e = document.createElement('script');
+                e.type = 'text/javascript';
+                e.id = 'janrainAuthWidget';
+
+                if (document.location.protocol === 'https:') {
+                    e.src = 'https://rpxnow.com/js/lib/breader/engage.js';
+                } else {
+                    e.src = 'http://widget-cdn.rpxnow.com/js/lib/breader/engage.js';
+                }
+
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(e, s);
+            })();
+        </script>
+        
+
+    <div id="janrainEngageEmbed"></div>
+
+
+        <?php
+
+    }
+
+    /**
+     * Logout
+     */
     public function destroy_session() {
         session_destroy();
 

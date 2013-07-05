@@ -18,7 +18,7 @@ class register_model extends b_model {
      * Validates input data
      */
     public function validateData($data) {
-        if ($this->database->getRows('SELECT * FROM users WHERE username="' . $this->database->escape($data['username']) . '"')) {
+        if ($this->database->getRows('SELECT * FROM users WHERE username="' . $this->database->escape($data['username']) . '" AND password!="socialAccount"')) {
             //This is escaped like this because the actual escape function also hashes the password and should not be called before this one
             $return['success'] = false;
             $return['error'] = 'EMAIL_EXISTS';

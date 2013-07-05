@@ -17,9 +17,9 @@
     </head>
     <body>
         <div id="container">
-                            <div id="menu">
-                                <div id='fakemenu'><img src="<?= SITE_PATH ?>img/logo.png" height="40" alt="bReader"><p id="menu-links"><a href=<?= SITE_PATH ?>redirectionController" id="current">Home</a><a href="<?= SITE_PATH ?>login/destroy_session">Logout</a></p></div>
-                </div>
+            <div id="menu">
+                <div id='fakemenu'><img src="<?= SITE_PATH ?>img/logo.png" height="40" alt="bReader"><p id="menu-links"><a href=<?= SITE_PATH ?>redirectionController" id="current">Home</a><a href="<?= SITE_PATH ?>login/destroy_session">Logout</a></p></div>
+            </div>
 
             <div id="content">
                 <div id="page">
@@ -36,11 +36,15 @@
                             <h3>Get informed</h3>
                             <a href="<?= SITE_PATH ?>stories">Read stories</a><br>
                             <a href="<?= SITE_PATH ?>stories?sort=new">Read <b>the newest</b> stories</a><br>
-							<h3>Customize your experience</h3>
+                            <h3>Customize your experience</h3>
                             <a href="<?= SITE_PATH ?>categories/chooseCategories">Choose your subsciptions</a><br>
-							<a href="<?= SITE_PATH ?>user/changeDetails">Change your details</a>
-							<h3>Other stuff</h3>
-                            <a href="<?=SITE_PATH?>commits">Show changes to the site</a><br>
+                            <?php
+                            if ($_SESSION['user'][0]['password'] != 'socialAccount') {
+                                ?>
+                                <a href="<?= SITE_PATH ?>user/changeDetails">Change your details</a>
+                            <?php } ?>
+                            <h3>Other stuff</h3>
+                            <a href="<?= SITE_PATH ?>commits">Show changes to the site</a><br>
                             <a href="<?= SITE_PATH ?>help">Help me, I'm lost!</a><br>
                             <a href="<?= SITE_PATH ?>stories/addFeed">Add your own RSS feed!</a><br>
 
@@ -49,7 +53,7 @@
                         ?>
                         <h2>Advert</h2>
                         <img src="<?= SITE_PATH ?>img/advert.jpg" class="advert">
-						<h2>Hosted by</h2>
-						<img src="<?=SITE_PATH?>img/icn.png">
+                        <h2>Hosted by</h2>
+                        <img src="<?= SITE_PATH ?>img/icn.png">
                     </div>
                     <div id="rightbar">
