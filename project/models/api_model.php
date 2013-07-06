@@ -135,7 +135,8 @@ class api_model extends b_model {
      * Gets a user's ID
      */
     public function getUserId($username) {
-        $this->database->query('SELECT id FROM `users` WHERE username="' . trim($this->database->escape($username)) . '"');
+        $this->database->query('SELECT * FROM `users` WHERE username="' . trim($this->database->escape($username)) . '"');
+		//echo 'SELECT * FROM `users` WHERE username="' . trim($this->database->escape($username)) . '"';
         if ($this->database->getRows() > 0) {
             return $this->database->returnObject()[0]->id;
         } else {
