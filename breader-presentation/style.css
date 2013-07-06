@@ -1,0 +1,31 @@
+@font-face{
+    font-family:BetterFont;
+    src:url('font.ttf');
+}
+body{
+    background:#6393AD;
+    font-family:BetterFont;
+    color:white;
+
+}
+
+.step{
+
+    font-size:34pt;
+    width:800px;
+    text-align:center;
+
+}
+a:visited,a:link,a:hover{
+    color:white;
+}
+h1{
+    font-size:72pt;
+}
+ul{
+    text-align: left;
+    margin-left:20px;
+}
+#design{
+    font-family:'Comic Sans MS','Comic Sans',cursive;
+}

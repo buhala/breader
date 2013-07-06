@@ -1,0 +1,13 @@
+#minutes{
+    display:inline;
+    font-size:21pt;
+}
+#seconds{
+    display:inline;
+    font-size:21pt;
+}
+#timer{
+    position:absolute;
+    bottom:0;
+    left:0;
+}
