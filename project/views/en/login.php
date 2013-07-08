@@ -74,7 +74,7 @@
                 <center>
                 <div id="janrainEngageEmbed"></div>
                 </center>
-        </div>
+        
     </form>
 
     <form id='forgot_form' style='display:none'>
@@ -86,6 +86,7 @@
         </div>
 
     </form>
-</div>
+        </div>
+        <div id="inspiration">Login design inspired by <a href="http://avroraos.herokuapp.com/"><u>AvroraOS</u></a></div>
 </body>
 </html>
