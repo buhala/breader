@@ -36,7 +36,8 @@
                 <ul>
                     <li>bFrame(http://goo.gl/ac6Yy)</li>
                     <li>Много (добри) сайтове за новини(http://goo.gl/HrGCG)</li>
-                    <li>Много редове код</li>
+                    <li>iUI(http://goo.gl/13zh1)</li>
+					<li>PHP/HTML/CSS/jQuery/Python</li>
                 </ul>
             </div>
             <div class="step" data-x="6000">
