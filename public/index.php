@@ -19,6 +19,11 @@ try {
      * http://xkcd.com/292/
      * this just confirms my hipothesis.
      */
+	if(!$_SERVER['PATH_INFO']){
+            $_parsedScriptName = pathinfo($_SERVER['SCRIPT_NAME']);
+            $_parsed = parse_url(str_replace($_parsedScriptName['basename'] , '', str_replace($_parsedScriptName['dirname'].'/','',$_SERVER['REQUEST_URI'])));
+            $_SERVER['PATH_INFO']=$_parsed['path'];
+}
     $bootstrap = new bootstrap($_SERVER['PATH_INFO']);
     $controller = $bootstrap->getController();
     $instance = $bootstrap->createInstance($controller);
