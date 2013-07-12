@@ -33,6 +33,7 @@ class bootstrap{
     *Returns the controller
     **/
     public function getController(){
+		if(isset($this->components[0])){
         if(strlen($this->components[0])>0){
             if($this->validParam($this->components[0])){
             return $this->components[0];
@@ -46,6 +47,10 @@ class bootstrap{
         else{
             return $GLOBALS['config']['autoload_controller'];
         }
+		}
+		else{
+			return $GLOBALS['config']['autoload_controller'];
+		}
     }
     /**
     *Terminates the execution because of an error
@@ -71,6 +76,7 @@ class bootstrap{
     *Gets the method that is suppoused to be called
     **/
     public function getMethod(){
+		if(isset($this->components[1])){
         if(strlen($this->components[1])>0){
             if($this->validParam($this->components[1])){
                 return $this->components[1];
@@ -83,6 +89,10 @@ class bootstrap{
         else{
             return 'index';
         }
+		}
+		else{
+			return 'index';
+		}
     }
     /**
     *Returns the arguments for the method

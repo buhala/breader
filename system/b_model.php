@@ -8,7 +8,7 @@ class b_model{
     }
     public function loadModel($model){
         include_once PROJECT_DIR.'models/'.$model.'.php';
-        if(!$this->$model){
+        if(!isset($this->$model)){
             $this->$model=new $model;
         }
         return $model;
@@ -18,7 +18,7 @@ class b_model{
     **/
     public function loadLibrary($lib){
         include_once PROJECT_DIR.'libs/'.$lib.'.php';
-		if(!$GLOBALS['libraries'][$lib]){
+		if(!isset($GLOBALS['libraries'][$lib])){
 			$GLOBALS['libraries'][$lib]=new $lib;
 		}
 	

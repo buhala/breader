@@ -55,7 +55,7 @@ class login extends b_controller {
             $insertingData = $this->register_model->escapeData($_POST);
             $this->register_model->doRegister($insertingData);
             $this->loadView('JsonDisplay', $rs);
-            - $this->loadLibrary('mailer');
+            $this->loadLibrary('mailer');
             $mailText = 'Welcome to bReader! 
 Here are your user details to get you started! 
 Username:' . $_POST['username'] . '
@@ -111,51 +111,6 @@ Password:' . $_POST['password'] . '
         $this->loadModel('forgot_model');
         $rs = $this->forgot_model->changeFinal($_POST, $key);
         $this->loadView('changed', $rs);
-    }
-
-    public function socialLogin() {
-        $this->loadView('siteTop');
-        ?>
-        <script type="text/javascript">
-            (function() {
-                if (typeof window.janrain !== 'object')
-                    window.janrain = {};
-                if (typeof window.janrain.settings !== 'object')
-                    window.janrain.settings = {};
-
-                janrain.settings.tokenUrl = 'http://local.breader.eu/api/tokenLogin';
-
-                function isReady() {
-                    janrain.ready = true;
-                }
-                ;
-                if (document.addEventListener) {
-                    document.addEventListener("DOMContentLoaded", isReady, false);
-                } else {
-                    window.attachEvent('onload', isReady);
-                }
-
-                var e = document.createElement('script');
-                e.type = 'text/javascript';
-                e.id = 'janrainAuthWidget';
-
-                if (document.location.protocol === 'https:') {
-                    e.src = 'https://rpxnow.com/js/lib/breader/engage.js';
-                } else {
-                    e.src = 'http://widget-cdn.rpxnow.com/js/lib/breader/engage.js';
-                }
-
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(e, s);
-            })();
-        </script>
-        
-
-    <div id="janrainEngageEmbed"></div>
-
-
-        <?php
-
     }
 
     /**

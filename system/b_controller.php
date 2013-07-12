@@ -10,7 +10,7 @@ class b_controller{
     }
     public function loadModel($model){
         include_once PROJECT_DIR.'models/'.$model.'.php';
-        if(!$this->model){
+        if(!isset($this->model)){
             $this->$model=new $model;
         }
         
@@ -20,7 +20,7 @@ class b_controller{
     **/
     public function loadLibrary($lib){
         include_once PROJECT_DIR.'libs/'.$lib.'.php';
-		if(!$GLOBALS['libraries'][$lib]){
+		if(!isset($GLOBALS['libraries'][$lib])){
         $GLOBALS['libraries'][$lib]=new $lib;
         }
         $this->$lib=$GLOBALS['libraries'][$lib];
@@ -32,7 +32,7 @@ class b_controller{
         
         global $data;
         $data=$input;
-        include_once PROJECT_DIR.'views/'.$GLOBALS['config']['extra']['lang'].'/'.$view.'.php';
+        include_once PROJECT_DIR.'views/'.$GLOBALS['config']['extra']['lang'].'/'.$view.'.php'; //If you want to load a view twice you are probably doing it wrong.
         
     }
 }

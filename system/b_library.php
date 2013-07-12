@@ -9,7 +9,7 @@ class b_library{
     public function __construct() {
         
         $classname=get_class($this);
-        if($GLOBALS['config']['libraries'][$classname]){
+        if(isset($GLOBALS['config']['libraries'][$classname])){
         foreach($GLOBALS['config']['libraries'][$classname] as $key=>$value){	
             $this->$key=$value;
         }
@@ -21,7 +21,7 @@ class b_library{
      */
     public function loadLibrary($lib){
         include_once PROJECT_DIR.'libs/'.$lib.'.php';
-		if(!$GLOBALS['libraries'][$lib]){
+		if(!isset($GLOBALS['libraries'][$lib])){
         $GLOBALS['libraries'][$lib]=new $lib;
 		}
     }

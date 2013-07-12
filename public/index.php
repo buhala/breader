@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(E_ERROR | E_WARNING | E_PARSE); //The system occasionally throws a notice
+//error_reporting(E_ERROR | E_WARNING | E_PARSE); //The system occasionally throws a notice
 //default_socket_timeout(6);
 define('SYSTEM_DIR', 'C:\xampp\htdocs\breader\system/'); //Change this line in case you move the project somewhere else
 define('PROJECT_DIR', 'C:\xampp\htdocs\breader\project/'); //Defines project-based files
@@ -32,9 +32,11 @@ try {
     if (method_exists($instance, $method)) {
         call_user_func_array(array($instance, $method), $arguments);
     } else {
+	echo 'Method:'.$method;
         throw new Exception('Method is invalid');
     }
     restore_error_handler();
 } catch (Exception $e) {
-    header('Location:' . SITE_PATH . 'errors');
+    
+	//header('Location:' . SITE_PATH . 'errors1');
 }

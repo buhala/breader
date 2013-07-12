@@ -40,7 +40,7 @@
                          * I honestly have no idea if I should access the value directly from the session
                          * But, I call it in so may places that it is better this way
                          */
-                        if ($_SESSION['il']) {
+                        if (isset($_SESSION['il'])) {
                             ?>
                             <h2>Navigation</h2>
                             <h3>Get informed</h3>

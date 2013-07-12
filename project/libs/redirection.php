@@ -26,7 +26,7 @@ class redirection extends b_library {
      */
     public function redirectIfLogged($link, $appendSitePath = true) {
 
-        if ($_SESSION['il']) {
+        if (isset($_SESSION['il'])) {
             $this->r($link, $appendSitePath);
         }
     }
@@ -38,7 +38,7 @@ class redirection extends b_library {
      * Redirects if not logged
      */
     public function redirectIfNotLogged($link, $appendSitePath = true) {
-        if (!$_SESSION['il']) {
+        if (!isset($_SESSION['il'])) {
 
             $this->r($link, $appendSitePath);
         }
