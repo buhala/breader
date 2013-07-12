@@ -12,6 +12,7 @@ body{
     display:block;
     margin:0 auto;
 }
+
 #container{
     
     width:100%;
@@ -51,7 +52,7 @@ body{
 
 }
 #menu a:hover{
-    color:#ff7f00;
+    color:#FFD6AD;
 }
 #menu-links{
     display:inline-block;

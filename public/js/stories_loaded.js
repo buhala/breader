@@ -4,6 +4,9 @@
  * This is a seperate file because it's nessesary for the AJAX to be completed before we do anything else.
  */
 $(function() {
+    $('#tip').on('click',function(){
+       $('#tip').fadeOut(500); 
+    });
     $('.unsubscribe').on('click', function(eventData) {
         console.log(this.id);
         console.log("unsubscribing...");
