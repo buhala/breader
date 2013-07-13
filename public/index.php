@@ -5,6 +5,14 @@
 define('SYSTEM_DIR', 'C:\xampp\htdocs\breader\system/'); //Change this line in case you move the project somewhere else
 define('PROJECT_DIR', 'C:\xampp\htdocs\breader\project/'); //Defines project-based files
 include SYSTEM_DIR . 'includes.php';
+switch($GLOBALS['config']['index']['enviroment']){
+	case "development":
+	case "testing":
+	error_reporting(E_ALL^E_NOTICE);
+	break;
+	case "production":
+		error_reporting(0);
+}
 if ($GLOBALS['config']['index']['start_session']) {
     ob_start();
     session_start();
