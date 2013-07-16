@@ -86,6 +86,7 @@ class stories_model extends b_model {
 
         return $categories;
     }
+
     /**
      * 
      * @param type $url
@@ -123,6 +124,7 @@ class stories_model extends b_model {
                 $story = $this->rssReader_model->getRandom();
                 if (is_object($story)) {
                     $story->cat_id = $cat->cat_id;
+                    $story->rating = $this->getStoryRating($story->link);
                     if (isset($cat->name)) {
                         $story->cat_name = $cat->name;
                     }
@@ -146,6 +148,21 @@ class stories_model extends b_model {
 
         shuffle($stories);
         return $stories;
+    }
+    /**
+     * 
+     * @param type $link
+     * @return int
+     * Returns a story's rating
+     */
+    private function getStoryRating($link) {
+        $this->database->query('SELECT * FROM ratings WHERE url="' . $this->database->escape($link) . '"');
+        if ($this->database->getRows() != 0) {
+            $object = $this->database->returnObject()[0];
+            return $object->rating / $object->count;
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -173,6 +190,8 @@ class stories_model extends b_model {
                     if (is_object($story)) {
 
                         $increase++;
+                        $story->rating = $this->getStoryRating($story->link);
+
                         $story->cat_id = $cat->cat_id;
                         if ($recommended == true) {
 
@@ -188,7 +207,13 @@ class stories_model extends b_model {
         $stories = array_unique($stories);
         return $stories;
     }
-
+/**
+ * 
+ * @param type $categories
+ * @param type $id
+ * @return \stdClass
+ * Returns recommended categoreis based on likes
+ */
     public function getSuggestedCategories($categories, $id) {
         $recommended = array();
         foreach ($categories as $cat) {

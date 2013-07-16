@@ -17,7 +17,7 @@ foreach ($data as $entry) {
         $i++;
         $stars[] = array('selected' => false);
     }
-    $selected = 3;
+    $selected = $entry->rating;
     $i = 0;
     while ($i < $selected) {
         if (isset($stars[$i])) {
