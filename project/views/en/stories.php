@@ -34,7 +34,7 @@ foreach ($data as $entry) {
 
 
     if (isset($type[0])) {
-        echo '<br><small>This is a recommended story.<a href="#" class="unsubscribe" id="' . $entry->cat_id . '" ><b>Click here to disable this type of stories</b></small><br>';
+        echo '<br><small>This is a recommended story.<a href="#" class="unsubscribe" id="' . $entry->cat_id . '" ><b>Click here to disable this type of stories</b></small></a><br>';
     }
     foreach ($stars as $star) {
         if ($star['selected'] == true) {
