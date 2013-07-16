@@ -7,6 +7,12 @@ $(function() {
     $('.star').click(function(){
        stripper=this.id.replace('story','').split('_');
        parentId='#link'+stripper[0];
+       if($(parentId).attr('clicked')==='true'){
+           alert('You have already voted for this link');
+           return false;
+       }
+       console.log($(parentId).attr('clicked'));
+       $(parentId).attr('clicked','true');
        console.log(parentId);
        link=$(parentId).attr('href');
        /*
@@ -41,7 +47,7 @@ $(function() {
          |/_/         \===/
         */
        rating=stripper[1]+1; //We want it to be an actual one, not a zero. We keep it a zero up to here, but now it becomes a one.
-       console.log(rating);
+       alert('Vote successful');
     });
         
     $('.star').mouseenter(function() {

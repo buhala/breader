@@ -8,44 +8,6 @@
 </style>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>
-$(function(){
-    $('.star').mouseenter(function(){
-        i=this.id;
-        while(i>=0){
-            $("#"+i).addClass('hover');
-            i--;
-        }
-    });
-    $('.star').mouseout(function(){
-       $('.star').removeClass('hover'); 
-    });
-});
+
 </script>
 <?php
-$starNum=5;
-$i=0;
-$stars=array();
-while($i<$starNum){
-    $i++;
-    $stars[]=array('selected'=>false);
-}
-$selected=$_GET['selected'];
-$i=0;
-while($i<$selected){
-    if(isset($stars[$i])){
-    $stars[$i]['selected']=true;
-    }
-    $i++;
-}
-$i=0;
-foreach($stars as $star){
-    if($star['selected']==true){
-        $class='class="selected star"';
-    }
-    else{
-        $class='class="star"';
-    }
-    $id='id="'.$i.'"';
-    echo '<img src="star.png" '.$class.' '.$id.'>';
-    $i++;
-}
