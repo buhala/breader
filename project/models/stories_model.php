@@ -86,6 +86,16 @@ class stories_model extends b_model {
 
         return $categories;
     }
+    /**
+     * 
+     * @param type $url
+     * @param type $rating
+     * Writes a rating to the database
+     */
+    public function addRating($url, $rating) {
+        $this->database->query('INSERT INTO ratings(url,rating,count)
+            VALUES("' . $this->database->escape($url) . '",' . $rating . ',1) ON DUPLICATE KEY UPDATE rating=rating+' . $rating . ',count=count+1');
+    }
 
     /**
      * 
@@ -113,7 +123,7 @@ class stories_model extends b_model {
                 $story = $this->rssReader_model->getRandom();
                 if (is_object($story)) {
                     $story->cat_id = $cat->cat_id;
-                    if(isset($cat->name)){
+                    if (isset($cat->name)) {
                         $story->cat_name = $cat->name;
                     }
                     if ($recommended == true) {
@@ -121,14 +131,13 @@ class stories_model extends b_model {
                         $story->is_recommended = true;
                     }
                     //Don't show a story user has already read
-                    $this->database->query('SELECT id FROM clicks WHERE user_id='.$userid.' AND url="'.$this->database->escape($story->link).'" AND time>'.time()-7200);
+                    $this->database->query('SELECT id FROM clicks WHERE user_id=' . $userid . ' AND url="' . $this->database->escape($story->link) . '" AND time>' . time() - 7200);
                     //Stops repeating stories
-                    if (in_array($story, $stories) && $this->database->getRows()<1) {
+                    if (in_array($story, $stories) && $this->database->getRows() < 1) {
                         $i--;
                     } else {
                         $stories[] = $story;
                     }
-                    
                 } else {
                     $i--;
                 }

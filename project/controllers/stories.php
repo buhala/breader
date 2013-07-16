@@ -10,7 +10,9 @@ class stories extends b_controller {
      */
     private $storiesCount = 20; //TODO:User based result
     private $recommendedStoriesCount = 5;
-
+    /*
+     * Shows the stories needed
+     */
     public function index() {
         $this->loadView('siteTop');
         $this->loadView('fake_stories');
@@ -21,7 +23,18 @@ class stories extends b_controller {
         }
         $this->loadView('siteFooter');
     }
-
+    /**
+     * 
+     * @param type $url
+     * @param type $rating
+     * Writes the rating for a story
+     */
+    public function ajaxAddRating($url,$rating){
+        $this->redirection->redirectIfNotLogged('login');
+        $this->loadModel('stories_model');
+        $this->stories_model->addRating($url,(int)$rating);
+        
+    }
     /**
      * Adding a feed. 
      */

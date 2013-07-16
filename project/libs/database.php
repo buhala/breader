@@ -47,8 +47,8 @@ class database extends b_library {
      * Gets the error
      */
     public function getError() {
-        $this->checkConnection();
-        return mysqli_error($this->ref);
+        //$this->checkConnection();
+        return $this->ref->error;
     }
 
     /**

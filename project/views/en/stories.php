@@ -28,7 +28,7 @@ foreach ($data as $entry) {
     $i = 0;
 
     //It is with GET so special chars don't glitch stuff
-    echo '<span id="story' . $loop . '"><h3 ><a href="' . SITE_PATH . 'link/visit/' . $entry->cat_id . '?url=' . urlencode($entry->link) . '">' . $entry->title . '</a>' . $cat . '</h3>' . strip_tags(substr($entry->description, 0, 140)) . '<br>';
+    echo '<span id="story' . $loop . '"><h3 ><a id="link'.$loop.'" href="' . SITE_PATH . 'link/visit/' . $entry->cat_id . '?url=' . urlencode($entry->link) . '">' . $entry->title . '</a>' . $cat . '</h3>' . strip_tags(substr($entry->description, 0, 140)) . '<br>';
 
 //**NO** Idea why this is like that
 
