@@ -5,7 +5,9 @@
  * There should not be a model related to this controller, simply because all the redirects are inside the 
  * system, a model would just make everything more complicated than it should be
  */
-class redirectionController extends b_controller {
+class redirectionController {
+
+    use b_controller;
 
     public function index() {
         $this->redirection->redirectIfNotLogged('login');

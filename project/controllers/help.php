@@ -3,7 +3,9 @@
 /**
  * Help system 
  */
-class help extends b_controller {
+class help {
+
+    use b_controller;
 
     /**
      * Shows all help topics&contact form

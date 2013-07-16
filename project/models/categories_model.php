@@ -1,7 +1,8 @@
 <?php
 
 //Handling categories
-class categories_model extends b_model {
+class categories_model { 
+	use b_model;
 
     /**
      * 
@@ -40,6 +41,7 @@ class categories_model extends b_model {
         $this->database->query('DELETE FROM `likings` WHERE `user_id`=' . $id . ' AND type=1'); //Voluntary likes only
         return true;
     }
+
     /**
      * 
      * @param type $id
@@ -50,10 +52,12 @@ class categories_model extends b_model {
         $this->database->query('SELECT id,name FROM profiles WHERE user_id=' . $id);
         return $this->database->returnObject();
     }
-    public function getProfile($id){
-        $this->database->query('SELECT * FROM profiles WHERE id='.$id);
+
+    public function getProfile($id) {
+        $this->database->query('SELECT * FROM profiles WHERE id=' . $id);
         return $this->database->returnObject()[0];
     }
+
     /**
      * 
      * @param type $id
@@ -80,10 +84,11 @@ class categories_model extends b_model {
         $this->database->query('INSERT INTO `likings` (cat_id,user_id,type)
             VALUES(' . $cat_id . ',' . $uid . ',0)');
     }
-    public function writeProfile($id,$cat,$name){
+
+    public function writeProfile($id, $cat, $name) {
         $this->database->query('INSERT INTO profiles (user_id,cats,name)
-            VALUES('.$id.',"'.$this->database->escape($cat).'","'.$this->database->escape($name).'")');
-        $return['success']=true;
+            VALUES(' . $id . ',"' . $this->database->escape($cat) . '","' . $this->database->escape($name) . '")');
+        $return['success'] = true;
         return $return;
     }
 

@@ -5,7 +5,8 @@
  *
  * @author buhala
  */
-class forgot_model extends b_model {
+class forgot_model { 
+	use b_model;
 
     /**
      * 
@@ -25,7 +26,7 @@ class forgot_model extends b_model {
 
     public function checkKey($key) {
         $this->database->query('SELECT * FROM users WHERE `key`="' . $key['key'] . '" AND password!="socialAccount"');
-      //  echo 'SELECT * FROM users WHERE `key`="' . $key['key'] . '" AND password!="socialAccount"';
+        //  echo 'SELECT * FROM users WHERE `key`="' . $key['key'] . '" AND password!="socialAccount"';
         if ($this->database->getRows() > 0) {
             $return['success'] = true;
         } else {

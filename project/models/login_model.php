@@ -3,7 +3,8 @@
 /**
  * Model for handling login
  */
-class login_model extends b_model {
+class login_model { 
+	use b_model;
 
     /**
      * 

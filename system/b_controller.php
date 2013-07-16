@@ -1,5 +1,5 @@
 <?php
-class b_controller{
+trait b_controller{
     /**
     *Loads a model
     **/

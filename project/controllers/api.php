@@ -3,14 +3,16 @@
 /**
  * API class
  */
-class api extends b_controller {
+class api {
+
+    use b_controller;
 
     /**
      * Since all the API returns is JSON, might as well set the header here
      */
     public function __construct() {
         parent::__construct();
-		error_reporting(0); //Even when debugging this is imporant
+        error_reporting(0); //Even when debugging this is imporant
         header('Cache-Control: no-cache, must-revalidate');
         header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
         header('Content-type: application/json');
@@ -101,12 +103,12 @@ class api extends b_controller {
         $token = $_POST['token'];
         $this->loadModel('api_model');
         $email = $this->api_model->getEmail($token);
-        echo 'Email:'.$email;
+        echo 'Email:' . $email;
         $hasAccount = $this->api_model->checkSocialAccount($email);
         if ($hasAccount == false) {
             $this->api_model->tokenRegister($email);
         }
-        $this->api_model->tokenLogin($email,true);
+        $this->api_model->tokenLogin($email, true);
         $this->redirection->r('redirectionController');
     }
 

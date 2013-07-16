@@ -3,7 +3,8 @@
 /**
  * The model for the register
  */
-class register_model extends b_model {
+class register_model { 
+	use b_model;
 
     protected $database, $hash;
 

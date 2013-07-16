@@ -1,6 +1,7 @@
 <?php
 
-class help_model extends b_model {
+class help_model { 
+	use b_model;
 
     public function getTopicsList() {
         $this->database->query('SELECT id,topic FROM help');

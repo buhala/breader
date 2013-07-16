@@ -3,7 +3,8 @@
 /**
  * Class for all things categories
  */
-class categories extends b_controller {
+class categories { 
+		use b_controller;
 
     /**
      * Lists categories

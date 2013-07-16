@@ -5,7 +5,8 @@
  *
  * @author buhala
  */
-class redirection_model extends b_model {
+class redirection_model { 
+	use b_model;
 
     public function checkForLikes($data) {
         $this->database->query('SELECT id FROM likings WHERE user_id=' . $data['user'][0]['id']);

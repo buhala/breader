@@ -3,7 +3,8 @@
 /**
  * The model corresponding to the API
  */
-class api_model extends b_model {
+class api_model { 
+	use b_model;
 
     private $apiKey = 'd0dbf3fd35e4c9f4fbc8b6216e23616afb8c9b12';
 
@@ -80,12 +81,14 @@ class api_model extends b_model {
         $this->loadModel('login_model');
         $this->login_model->createSession();
     }
-    public function tokenRegister($email){
-        $data['username']=$this->database->escape($email);
-        $data['password']='socialAccount';
+
+    public function tokenRegister($email) {
+        $data['username'] = $this->database->escape($email);
+        $data['password'] = 'socialAccount';
         $this->loadModel('register_model');
         $this->register_model->doRegister($data);
     }
+
     /**
      * 
      * @param type $email
@@ -136,7 +139,7 @@ class api_model extends b_model {
      */
     public function getUserId($username) {
         $this->database->query('SELECT * FROM `users` WHERE username="' . trim($this->database->escape($username)) . '"');
-		//echo 'SELECT * FROM `users` WHERE username="' . trim($this->database->escape($username)) . '"';
+        //echo 'SELECT * FROM `users` WHERE username="' . trim($this->database->escape($username)) . '"';
         if ($this->database->getRows() > 0) {
             return $this->database->returnObject()[0]->id;
         } else {

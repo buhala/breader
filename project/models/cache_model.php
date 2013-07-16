@@ -4,7 +4,8 @@
  * Cache model
  * This is different because it is from another project.
  */
-class cache_model extends b_model {
+class cache_model { 
+	use b_model;
 
     private $cacheTime = 7200;
     private $query;

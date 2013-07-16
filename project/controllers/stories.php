@@ -3,16 +3,20 @@
 /**
  * Controller for showing stories
  */
-class stories extends b_controller {
+class stories {
+
+    use b_controller;
 
     /**
      * Shows a loading page before doing stuff -_-
      */
     private $storiesCount = 20; //TODO:User based result
     private $recommendedStoriesCount = 5;
+
     /*
      * Shows the stories needed
      */
+
     public function index() {
         $this->loadView('siteTop');
         $this->loadView('fake_stories');
@@ -23,18 +27,19 @@ class stories extends b_controller {
         }
         $this->loadView('siteFooter');
     }
+
     /**
      * 
      * @param type $url
      * @param type $rating
      * Writes the rating for a story
      */
-    public function ajaxAddRating($url,$rating){
+    public function ajaxAddRating($url, $rating) {
         $this->redirection->redirectIfNotLogged('login');
         $this->loadModel('stories_model');
-        $this->stories_model->addRating($url,(int)$rating);
-        
+        $this->stories_model->addRating($url, (int) $rating);
     }
+
     /**
      * Adding a feed. 
      */
@@ -76,7 +81,7 @@ class stories extends b_controller {
         $rs = $this->stories_model->getStoriesPerCategory($popularity, $this->storiesCount, $feeds->categories);
         // var_dump($rs);
         if ($sortby == 'random') {
-            $final = $this->stories_model->getRandomStories($rs, $feeds->feeds,$_SESSION['user'][0]['id']);
+            $final = $this->stories_model->getRandomStories($rs, $feeds->feeds, $_SESSION['user'][0]['id']);
         } elseif ($sortby == 'new') {
             $final = $this->stories_model->getNewestStories($rs, $feeds->feeds);
         }
@@ -85,7 +90,7 @@ class stories extends b_controller {
         $popularity_recommended = $this->stories_model->getCollectivePopulation($feeds_recommended->categories);
         $rs_recommended = $this->stories_model->getStoriesPerCategory($popularity_recommended, $this->recommendedStoriesCount, $feeds_recommended->categories);
         if ($sortby == 'random') {
-            $final_recommended = $this->stories_model->getRandomStories($rs_recommended, $feeds_recommended->feeds,$_SESSION['user'][0]['id'], true); //We want to show the user a notice this story is a recommendation
+            $final_recommended = $this->stories_model->getRandomStories($rs_recommended, $feeds_recommended->feeds, $_SESSION['user'][0]['id'], true); //We want to show the user a notice this story is a recommendation
         } elseif ($sortby == 'new') {
             $final_recommended = $this->stories_model->getNewestStories($rs_recommended, $feeds_recommended->feeds, true); //We want to show the user a notice this story is a recommendation
         }

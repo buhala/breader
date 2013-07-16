@@ -3,7 +3,8 @@
 /**
  * Model for writing feeds
  */
-class feeds_model extends b_model {
+class feeds_model { 
+	use b_model;
 
     /**
      * 

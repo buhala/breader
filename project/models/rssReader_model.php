@@ -3,7 +3,8 @@
 /**
  * RssReader class. Simple RSS reader
  */
-class rssReader_model extends b_model {
+class rssReader_model { 
+	use b_model;
 
     private $instance;
 

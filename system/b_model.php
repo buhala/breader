@@ -1,5 +1,5 @@
 <?php
-class b_model{
+trait b_model{
     public function __construct() {
         foreach ($GLOBALS['libraries'] as $key => $value) {
             $this->$key=$value;

@@ -3,7 +3,8 @@
 /**
  * Main application model, gets stories
  */
-class stories_model extends b_model {
+class stories_model { 
+	use b_model;
 
     /**
      * 
@@ -149,6 +150,7 @@ class stories_model extends b_model {
         shuffle($stories);
         return $stories;
     }
+
     /**
      * 
      * @param type $link
@@ -207,13 +209,14 @@ class stories_model extends b_model {
         $stories = array_unique($stories);
         return $stories;
     }
-/**
- * 
- * @param type $categories
- * @param type $id
- * @return \stdClass
- * Returns recommended categoreis based on likes
- */
+
+    /**
+     * 
+     * @param type $categories
+     * @param type $id
+     * @return \stdClass
+     * Returns recommended categoreis based on likes
+     */
     public function getSuggestedCategories($categories, $id) {
         $recommended = array();
         foreach ($categories as $cat) {

@@ -3,7 +3,9 @@
 /**
  * Development/Testing class
  */
-class developmentController extends b_controller {
+class developmentController {
+
+    use b_controller;
 
     public function rssTest() {
         $this->loadModel('rssReader_model');

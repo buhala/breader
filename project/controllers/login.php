@@ -3,7 +3,9 @@
 /**
  * Login controller, handles the login page and the ajax requests from it
  */
-class login extends b_controller {
+class login {
+
+    use b_controller;
 
     protected $database, $hash; //They are appended from parent
 
@@ -77,12 +79,11 @@ Password:' . $_POST['password'] . '
         if ($rs['success'] == false) {
             $this->loadView('JsonDisplay', $rs);
         } else {
-             $rs=$this->forgot_model->doChange($escapedData);
-            $mailText='Activate your new password at '.SITE_PATH.'login/restorePass/'.$rs['key'];
+            $rs = $this->forgot_model->doChange($escapedData);
+            $mailText = 'Activate your new password at ' . SITE_PATH . 'login/restorePass/' . $rs['key'];
             $this->loadLibrary('mailer');
-            $this->mailer->sendMail('bReader password reset',$GLOBALS['config']['system']['email'],$_POST['username'],$mailText);
-             $this->loadView('JsonDisplay',$rs);
-
+            $this->mailer->sendMail('bReader password reset', $GLOBALS['config']['system']['email'], $_POST['username'], $mailText);
+            $this->loadView('JsonDisplay', $rs);
         }
     }
 
