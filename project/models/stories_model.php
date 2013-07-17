@@ -3,8 +3,9 @@
 /**
  * Main application model, gets stories
  */
-class stories_model { 
-	use b_model;
+class stories_model {
+
+    use b_model;
 
     /**
      * 
@@ -22,7 +23,6 @@ class stories_model {
         }
         foreach ($likes as $key => $like) {
             $q = $this->database->query('SELECT popularity FROM likings WHERE `cat_id`=' . $like->cat_id);
-
             $others = $this->database->returnObject();
             // var_dump($others);
             $collectivePop = 0;

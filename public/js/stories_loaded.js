@@ -46,8 +46,15 @@ $(function() {
          / / /      \===|===/
          |/_/         \===/
         */
-       rating=stripper[1]+1; //We want it to be an actual one, not a zero. We keep it a zero up to here, but now it becomes a one.
-       alert('Vote successful');
+       rating=parseInt(stripper[1])+1; //We want it to be an actual one, not a zero. We keep it a zero up to here, but now it becomes a one.
+       console.log("Rating:"+rating);
+        ajax_setup={};
+       ajax_setup.url='http://local.breader.eu/stories/ajaxAddRating/'+rating+'?url='+link;
+       ajax_setup.success=function(rs){
+           console.log(rs)
+           alert('Vote successful');
+       };
+       $.ajax(ajax_setup);
     });
         
     $('.star').mouseenter(function() {

@@ -34,7 +34,11 @@ class stories {
      * @param type $rating
      * Writes the rating for a story
      */
-    public function ajaxAddRating($url, $rating) {
+    public function ajaxAddRating($rating) {
+        $url=$_GET['url'];
+        if($rating>5 || $rating<0){
+            return false; //I don't care what cheaters see ;(
+        }
         $this->redirection->redirectIfNotLogged('login');
         $this->loadModel('stories_model');
         $this->stories_model->addRating($url, (int) $rating);
