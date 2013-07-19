@@ -11,9 +11,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>bReader</title>
 
-        <link rel="stylesheet" type="text/css" href="<?= SITE_PATH ?>css/style.css" /> 
+        <link rel="stylesheet" type="text/css" href="<?= SITE_PATH ?>css/style.css" />
+
         <link rel="stylesheet" type="text/css" href="<?= SITE_PATH ?>css/hack.css" /> 
-                <?php
+        <?php
         //New design, highly experimental, has a lot of bugs, but is overall better
         if (isset($_GET['betterdesign'])) {
             ?> 
@@ -23,7 +24,17 @@
         }
         ?>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-
+        <script>
+            $(function() {
+                date = new Date();
+                hour = date.getHours();
+                if (hour >= 21 || hour <= 5) {
+                    $('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '<?=SITE_PATH?>css/night.css') );
+                    $('img[src="<?=SITE_PATH?>img/star.png"]').attr('src','asdfasdf');
+                
+                }
+            });
+        </script>
     </head>
     <body>
         <div id="container">

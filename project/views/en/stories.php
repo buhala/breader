@@ -43,7 +43,7 @@ foreach ($data as $entry) {
             $class = 'class="star"';
         }
         $id = 'id="story' . $loop . '_' . $i . '"';
-        echo '<img src="img/star.png" ' . $class . ' ' . $id . ' data-parent="story' . $loop . '">';
+        echo '<img src="'.SITE_PATH.'img/star.png" ' . $class . ' ' . $id . ' data-parent="story' . $loop . '">';
         $i++;
     }
     ?>
