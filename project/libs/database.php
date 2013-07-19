@@ -3,7 +3,9 @@
 /**
  * Database handling
  */
-class database extends b_library {
+class database {
+
+    use b_library;
 
     protected $host, $username, $password, $query, $db, $ref, $autoconnect;
 
@@ -12,7 +14,7 @@ class database extends b_library {
      */
     public function __construct() {
 
-        parent::__construct();
+        $this->setVars();
         if ($this->autoconnect == true) {
             $this->connect();
         }

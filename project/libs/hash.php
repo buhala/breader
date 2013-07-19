@@ -3,7 +3,9 @@
 /**
  * Hashing class
  */
-class hash extends b_library {
+class hash {
+
+    use b_library;
 
     protected $salt;
 

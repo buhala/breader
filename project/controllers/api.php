@@ -11,7 +11,7 @@ class api {
      * Since all the API returns is JSON, might as well set the header here
      */
     public function __construct() {
-        parent::__construct();
+        $this->setVars();
         error_reporting(0); //Even when debugging this is imporant
         header('Cache-Control: no-cache, must-revalidate');
         header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');

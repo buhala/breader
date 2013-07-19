@@ -3,8 +3,8 @@
 /**
  * All redirects
  */
-class redirection extends b_library {
-
+class redirection {
+    use b_library;
     /**
      * 
      * @param type $link

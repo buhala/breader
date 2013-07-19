@@ -12,7 +12,7 @@ class api_model {
      * For ease of access
      */
     public function __construct() {
-        parent::__construct();
+        $this->setVars();
         $this->api_key = $GLOBALS['config']['extra']['api']['token'];
     }
 
