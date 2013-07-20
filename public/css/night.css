@@ -38,11 +38,14 @@ body{
     display:block;
     color:#a2a2a2;
     font-size: 17pt;
-	padding-bottom:2px;
 }
 #fakemenu{
-    width:90%;
+	position:fixed;
+	background-color:black;
+    width:100%;
     margin: 0 auto;
+	
+	
 }
 #menu img{
     padding:5px;
@@ -94,7 +97,7 @@ a:hover{
 }
 #page{
     background-color:black;
-    padding-top:0px;
+    padding-top:5%;
     height:90%;
     margin:0 auto;
     width:90%;
