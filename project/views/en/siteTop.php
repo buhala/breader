@@ -39,7 +39,7 @@
     <body>
         <div id="container">
             <div id="menu">
-                <div id='fakemenu'><img src="<?= SITE_PATH ?>img/logo.png" height="40" alt="bReader"><p id="menu-links"><a href=<?= SITE_PATH ?>redirectionController" id="current">Home</a><a href="<?= SITE_PATH ?>login/destroy_session">Logout</a></p></div>
+                <div id='fakemenu'><a href="<?=SITE_PATH?>"><img src="<?= SITE_PATH ?>img/logo.png" height="40" alt="bReader"></a><p id="menu-links"><a href=<?= SITE_PATH ?>redirectionController" id="current">Home</a><a href="<?= SITE_PATH ?>login/destroy_session">Logout</a></p></div>
             </div>
 
             <div id="content">
