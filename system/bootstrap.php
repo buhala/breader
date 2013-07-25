@@ -12,7 +12,7 @@ class bootstrap{
     public function __construct($raw) {
         $this->raw=substr($raw,1);
 		$lastSymbol=substr($raw,-1);
-		if($lastSymbol=='/'){
+		if($lastSymbol=='/' && strlen($raw)>1){
 		header('Location:'.substr($raw,0,strlen($raw)-1));
 		}
         $this->components=explode('/', $this->raw);
