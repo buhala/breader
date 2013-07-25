@@ -14,6 +14,6 @@ foreach ($data['categories'] as $category) {
             $category->rate=$like->popularity;
         }
     }
-    echo '<input type="checkbox" id="'.$category->id.'" class="selector" name="' . $category->id . '" value="1" ' . $attr . '>' . $category->name . '-'.$category->rate.' LikeRank<br>';
+    echo '<input type="checkbox" id="'.$category->id.'" class="selector" name="' . $category->id . '" value="1" ' . $attr . '><label for="'.$category->id.'">' . $category->name . '-'.$category->rate.' LikeRank</label><br>';
 }
 echo '<input type="submit" name="act" value="Choose categories"></form></div>';
