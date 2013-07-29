@@ -7,7 +7,7 @@
     Or just rip stuff out.
     I don't mind
     -->
-    <head>
+     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>bReader</title>
         <base href="<?=SITE_PATH?>">
