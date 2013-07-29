@@ -12,6 +12,6 @@ if ($data['success'] == true) {
         window.history.back();
     }
     else {
-        window.location.href = "<?= SITE_PATH ?>redirectionController";
+        window.location.href = "redirectionController";
     }
 </script>

@@ -6,9 +6,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title></title>
-        <link rel="stylesheet" href="<?= SITE_PATH ?>css/login.css">  
+        <link rel="stylesheet" href="css/login.css">  
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script src='<?= SITE_PATH ?>js/home.js'></script>
+        <script src='js/home.js'></script>
         <script type="text/javascript">
             (function() {
                 if (typeof window.janrain !== 'object')

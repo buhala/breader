@@ -1,4 +1,4 @@
-<script src="<?= SITE_PATH ?>js/stories_loaded.js"></script>
+<script src="js/stories_loaded.js"></script>
 
 <?php
 foreach ($data as $entry) {

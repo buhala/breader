@@ -7,7 +7,7 @@ $(function() {
     date = new Date();
     hour = date.getHours();
     if (hour >= 21 || hour <= 5) {
-        $('img[src="http://local.breader.eu/img/star.png"]').attr('src', 'http://local.breader.eu/img/star-night.png');
+        $('img[src="img/star.png"]').attr('src', 'img/star-night.png');
 
     }
     $('.star').click(function() {
@@ -55,7 +55,7 @@ $(function() {
         rating = parseInt(stripper[1]) + 1; //We want it to be an actual one, not a zero. We keep it a zero up to here, but now it becomes a one.
         console.log("Rating:" + rating);
         ajax_setup = {};
-        ajax_setup.url = 'http://local.breader.eu/stories/ajaxAddRating/' + rating + '?url=' + link;
+        ajax_setup.url = 'stories/ajaxAddRating/' + rating + '?url=' + link;
         ajax_setup.success = function(rs) {
             console.log(rs)
             alert('Vote successful');
@@ -82,9 +82,8 @@ $(function() {
     $('.unsubscribe').on('click', function(eventData) {
         console.log(this.id);
         console.log("unsubscribing...");
-        var site_path = 'http://local.breader.eu/';
         var ajax_setup = {};
-        ajax_setup.url = site_path + 'categories/deleteRecommendation/' + this.id;
+        ajax_setup.url = 'categories/deleteRecommendation/' + this.id;
         ajax_setup.dataType = 'html';
         ajax_setup.error = function() {
             console.log('Something is very wrong');

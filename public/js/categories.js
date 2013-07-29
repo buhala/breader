@@ -1,7 +1,6 @@
 $(function() {
-    var site_url = 'http://local.breader.eu/';
     var ajax_setup = {};
-    ajax_setup.url = site_url + 'categories/getProfiles';
+    ajax_setup.url = 'categories/getProfiles';
     ajax_setup.dataType = 'json';
     ajax_setup.cache = false;
     ajax_setup.success = function(result) {
@@ -34,7 +33,7 @@ $(function() {
         }
         else {
             ajax_setup = {};
-            ajax_setup.url = site_url + 'categories/getProfile/' + changeId;
+            ajax_setup.url = 'categories/getProfile/' + changeId;
             ajax_setup.cache = false;
             ajax_setup.dataType = 'json';
             ajax_setup.success = function(rs) {
@@ -69,7 +68,7 @@ $(function() {
         categories = categories.substr(0, categories.length - 1);
         console.log(categories);
         var ajax_setup = {};
-        ajax_setup.url = site_url + 'categories/writeProfile';
+        ajax_setup.url = 'categories/writeProfile';
         ajax_setup.dataType = 'json';
         ajax_setup.cache = false;
         ajax_setup.type='POST';

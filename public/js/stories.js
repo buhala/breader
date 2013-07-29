@@ -7,7 +7,6 @@ $(function() {
 
     function loadNew() {
         console.log("loading stories");
-        var site_path = 'http://local.breader.eu/';
         var ajax_setup = {};
         if (getURLParameter('sort') == 'new') {
             appender = "new";
@@ -15,7 +14,7 @@ $(function() {
         else {
             appender = "random";
         }
-        ajax_setup.url = site_path + 'stories/showStories/' + appender;
+        ajax_setup.url = 'stories/showStories/' + appender;
         ajax_setup.type = 'post';
         ajax_setup.cache = false;
         ajax_setup.dataType = 'html';

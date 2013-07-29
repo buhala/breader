@@ -5,7 +5,7 @@ if ($data['success'] == true) {
     echo '<script>alert("Your feed URL is too short")</script>';
 }
 ?>
-<form method="post" action="<?= SITE_PATH ?>stories/addFeed" style="padding-bottom:600px">
+<form method="post" action="stories/addFeed" style="padding-bottom:600px">
     <table>
         <tr>
             <td>Choose category</td><td>

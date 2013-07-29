@@ -7,7 +7,7 @@
     ?>
 </ol>
 <h2>Contact support</h2>
-<form method="post" action="<?= SITE_PATH ?>help/submitRequest">
+<form method="post" action="help/submitRequest">
     <table>
         <tr>
             <td>Email:</td>

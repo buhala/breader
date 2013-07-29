@@ -1,4 +1,4 @@
-<script src="<?= SITE_PATH ?>js/stories_loaded.js"></script>
+<script src="js/stories_loaded.js"></script>
 <center id='tip' style='cursor:pointer;'>Tip:Click on stories' titles to view the full article</center>
 <?php
 $starNum = 5; //This is a constant

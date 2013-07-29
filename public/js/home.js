@@ -1,5 +1,5 @@
 $(function() {
-    var site_path = 'http://local.breader.eu/';
+    
     $('.register').on('click', function() {
         $('#login_form').hide();
         $('#forgot_form').hide();
@@ -36,7 +36,7 @@ $(function() {
         ajax_setup.success = function(response) {
             console.log(response);
             if (response.success == true) {
-                window.location.href = site_path + 'redirectionController';
+                window.location.href = 'redirectionController';
             }
             else {
                 if (response.error == 'INVALID_DATA') {
@@ -67,7 +67,7 @@ $(function() {
             console.log(response);
             if (response.success == true) {
                 alert('You have been registered. You can now login!');
-                window.location.href = site_path + 'login';
+                window.location.href = 'login';
             }
             else {
                 if (response.error == 'INVALID_MAIL') {
@@ -105,7 +105,7 @@ $(function() {
             console.log(response);
             if (response.success == true) {
                 alert('You have been sent an email containing further instructions');
-                //window.location.href=site_path+'login';              
+                //window.location.href='login';              
             }
             else {
                 alert('Your user does not exist');

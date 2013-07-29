@@ -1,5 +1,5 @@
 <h2>Смени паролата</h2>
-<form method='post' action='<?= SITE_PATH ?>user/doPassChange'>
+<form method='post' action='user/doPassChange'>
 
     <?php
     if ($data['type'] == 1) {
@@ -35,7 +35,7 @@ if ($data['type'] == 2) {
 ?>
     </td>
 </tr>
-<form method='post' action='<?= SITE_PATH ?>user/doEmailChange'>
+<form method='post' action='user/doEmailChange'>
 
     <tr><td>Въведи нов имейл:</td><td><input type='text' name='email'></td></tr>
     <tr><td colspan='2' style='text-align: center'><input type='submit' name='act' value='Смени имейла'></td></tr>
