@@ -79,7 +79,12 @@ class bootstrap{
 		if(isset($this->components[1])){
         if(strlen($this->components[1])>0){
             if($this->validParam($this->components[1])){
-                return $this->components[1];
+				if(!in_array($this->components[1],get_class_methods('b_controller'))){
+					return $this->components[1];
+				}
+				else{
+					return 'index';
+				}
             }
             else{
                 
