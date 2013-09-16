@@ -24,10 +24,6 @@ class register_model {
             $return['success'] = false;
             $return['error'] = 'EMAIL_EXISTS';
         } else {
-            if (strlen($data['password']) < 5) {
-                $return['success'] = false;
-                $return['error'] = 'SHORT_PASS';
-            } else {
                 if ($data['password'] != $data['reppassword']) {
                     $return['success'] = false;
                     $return['error'] = 'PASSWORD_MISMATCH';
@@ -38,8 +34,8 @@ class register_model {
                     } else {
                         $return['success'] = true;
                     }
+            
                 }
-            }
         }
         return $return;
     }
