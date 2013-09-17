@@ -26,7 +26,7 @@ class database {
      * Start DB connection
      */
     public function connect() {
-        $this->ref = mysqli_connect($this->host, $this->username, $this->password, $this->db) or die('Check MySQL Connection');
+        $this->ref = new mysqli($this->host, $this->username, $this->password, $this->db) or die('Check MySQL Connection');
         return $this->ref; //For development purposes;
     }
 
@@ -38,7 +38,7 @@ class database {
      */
     public function escape($string) {
         $this->checkConnection();
-        $rs = mysqli_real_escape_string($this->ref, $string);
+        $rs = $this->ref->real_escape_string($string);
         //echo "\n\n\n\n\n".'RESULT:'.$rs;
         return $rs;
     }
@@ -104,7 +104,7 @@ class database {
             $result = $this->query($query);
         }
 
-        if (@mysqli_num_rows($result) != 0) {
+        if (@$result->num_rows != 0) {
             $arr = array();
             while ($row = $result->fetch_assoc()) {
                 $arr[] = $row;
@@ -149,7 +149,7 @@ class database {
      * Reconnects if need be
      */
     public function checkConnection() {
-        if (!mysqli_ping($this->ref)) {
+        if (!$this->ref->ping()) {
             @$this->connect();
         }
     }
@@ -160,7 +160,7 @@ class database {
      * Disconnects
      */
     public function disconnect() {
-        return @mysqli_close($this->ref);
+        return $this->ref->close();
     }
 
     /**
