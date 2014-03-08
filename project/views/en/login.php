@@ -5,7 +5,7 @@
     -->
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title></title>
+        <title>bReader - Login</title>
         <link rel="stylesheet" href="css/login.css">  
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script src='js/home.js'></script>
