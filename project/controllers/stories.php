@@ -19,7 +19,7 @@ class stories {
 
     public function index() {
         $this->loadView('siteTop');
-        $this->loadView('fake_stories');
+        $this->loadView('fakeStories');
         $this->loadModel('stories_model'); //We want it here, too
         $feeds = $this->stories_model->getSubscribedFeeds($_SESSION['user'][0]['id']);
         if (count($feeds->categories) == 0) {
