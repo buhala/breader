@@ -24,17 +24,7 @@
         }
         ?>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script>
-            $(function() {
-                date = new Date();
-                hour = date.getHours();
-                if (hour >= 21 || hour <= 5) {
-                    $('head').append($('<link rel="stylesheet" type="text/css" />').attr('href', 'css/night.css'));
-                    $('img[src="img/star.png"]').attr('src', 'asdfasdf');
 
-                }
-            });
-        </script>
     </head>
     <body>
         <div id="container">
