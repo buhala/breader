@@ -47,7 +47,7 @@
         <div id="content">
             <form id='login_form' style='display:block'>
                 <h1>Login to bReader</h1>
-                <input type="text" name="uname" placeholder="Email" class="input" id="username_login" css=""/>
+                <input type="text" name="uname" placeholder="Email" class="input" id="username_login"/>
                 <input type="password" name="pass" placeholder="Password" class="input" id="password_login">
                 <div class="addons">
                     <a href="#" class="social">Social Login?</a>
