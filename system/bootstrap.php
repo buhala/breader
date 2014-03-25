@@ -1,13 +1,13 @@
 <?php
 /**
-Class for loading the rest of the framework
+*Class for loading the rest of the framework
 **/
 class bootstrap{
     private $raw;
     private $components;
     private $arguments;
     /**
-    Creates the class instance, also gets the arguments for the method
+    *Creates the class instance, also gets the arguments for the method
     **/
     public function __construct($raw) {
         $this->raw=substr($raw,1);

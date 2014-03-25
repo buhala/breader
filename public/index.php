@@ -37,7 +37,7 @@ try {
     $instance = $bootstrap->createInstance($controller);
     $method = $bootstrap->getMethod();
     $arguments = $bootstrap->getArguments();
-    if (method_exists($instance, $method)) {
+    if (is_callable([$instance, $method])) {
         call_user_func_array(array($instance, $method), $arguments);
     } else {
 	echo 'Method:'.$method;

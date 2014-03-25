@@ -20,6 +20,7 @@ trait b_controller {
         if (!isset($this->model)) {
             $this->$model = new $model;
         }
+        return $this->$model;
     }
 
     /**
@@ -31,6 +32,7 @@ trait b_controller {
             $GLOBALS['libraries'][$lib] = new $lib;
         }
         $this->$lib = $GLOBALS['libraries'][$lib];
+        return $this->$lib;
     }
 
     /**

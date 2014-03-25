@@ -15,19 +15,39 @@ class categories_model {
         $rs = $this->database->returnObject();
         return $rs;
     }
+    /**
+     * Deletes a category
+     * @param int $id
+     */
     public function deleteCategory($id){
         $r=$this->database->query('DELETE FROM `categories` WHERE id='.(int)$id);
     }
+    /**
+     * Checks if a category exists
+     * @param int $id
+     * @return boolean
+     */
     public function categoryExists($id){
         if(strlen($id)==0){return false;}
         return (bool)$this->database->query('SELECT id FROM `categories` WHERE id='.(int)$id);
     }
+    /**
+     * Gets all info for a category
+     * @param int $id
+     * @return type
+     */
     public function getCategory($id){
         $pId=(int)$id;
         $r=$this->database->query('SELECT * FROM `categories` WHERE id='.$pId);
        // echo $r->num_rows;
         return $this->database->returnObject($r);
     }
+    /**
+     * 
+     * @param int $id
+     * @param str $name
+     * @param str $related
+     */
     public function updateCategory($id,$name,$related){
         $this->database->query('UPDATE `categories` SET name="'.$this->database->escape($name).'",related_to="'.$this->database->escape($related).'" WHERE id='.$id);
         //echo $this->database->getError();
@@ -68,12 +88,22 @@ class categories_model {
         $this->database->query('SELECT id,name FROM profiles WHERE user_id=' . $id);
         return $this->database->returnObject();
     }
+    /**
+     * Adds in a category
+     * @param str $name
+     * @param str $related
+     */
     public function insertCategory($name,$related){
        // echo "asdfasdf";
         $this->database->query('INSERT INTO `categories` (name,related_to)
             VALUES("'.$this->database->escape($name).'","'.$this->database->escape($related).'")');
         echo $this->database->getError();
     }
+    /**
+     * Gets a profile's details
+     * @param int $id
+     * @return type
+     */
     public function getProfile($id) {
         $this->database->query('SELECT * FROM profiles WHERE id=' . $id);
         return $this->database->returnObject()[0];
@@ -105,10 +135,17 @@ class categories_model {
         $this->database->query('INSERT INTO `likings` (cat_id,user_id,type)
             VALUES(' . $cat_id . ',' . $uid . ',0)');
     }
-
+    /**
+     * Writes a profile to the database
+     * @param int $id
+     * @param str $cat
+     * @param str $name
+     * @return array
+     */
     public function writeProfile($id, $cat, $name) {
         $this->database->query('INSERT INTO profiles (user_id,cats,name)
             VALUES(' . $id . ',"' . $this->database->escape($cat) . '","' . $this->database->escape($name) . '")');
+        $return=[];
         $return['success'] = true;
         return $return;
     }

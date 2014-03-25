@@ -44,6 +44,10 @@ class redirection {
             $this->r($link, $appendSitePath);
         }
     }
+    /**
+     * Redirects the user a page back. Usage in public-facing methods should have a good fallback.
+     * @param str $fallback
+     */
     public function redirectBack($fallback='redirectionController'){
                 if(isset($_SERVER['HTTP_REFERER'])){
             $this->r($_SERVER['HTTP_REFERER'],false);
