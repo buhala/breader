@@ -17,6 +17,10 @@ class feeds_model {
         $return['cat'] = (int) $data['cat'];
         return $return;
     }
+    public function getFeeds(){
+        $rq=$this->database->query('SELECT * FROM feeds');
+        return $this->database->returnObject($rq);
+    }
 
     /**
      * 
@@ -44,5 +48,28 @@ class feeds_model {
             VALUES(' . $data['cat'] . ',"' . $data['url'] . '")');
         return true;
     }
-
+    public function getSuggestedFeeds(){
+        $rq=$this->database->query('SELECT * FROM suggested_feeds');
+        return $this->database->returnObject($rq);
+    }
+    public function getFeed($id){
+        $rq=$this->database->query('SELECT * FROM feeds WHERE id='.(int)$id);
+        return $this->database->returnObject($rq);
+    }
+    public function editFeed($id,$link,$cat_id){
+        $this->database->query('UPDATE feeds SET link="'.$this->database->escape($link ).'",cat_id='.(int)$cat_id.' WHERE id='.(int)$id);
+    }
+    public function deleteFeed($id){
+        $this->database->query('DELETE FROM feeds WHERE id='.(int)$id);
+    }
+    public function approveFeed($id){
+        $rq=$this->database->query('SELECT * FROM suggested_feeds WHERE id='.(int)$id); //I am now realising how incredibly dumb it is storing them into seperate categories
+        $feed=$this->database->returnObject()[0];
+        $this->database->query('INSERT INTO feeds(link,cat_id)
+            VALUES("'.$feed->url.'","'.$feed->cat_id.'")');
+        $this->deleteSuggestedFeed($id);
+    }
+    public function deleteSuggestedFeed($id){
+        $this->database->query('DELETE FROM suggested_feeds WHERE id='.(int)$id);
+        }
 }

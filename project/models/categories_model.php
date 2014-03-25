@@ -15,7 +15,20 @@ class categories_model {
         $rs = $this->database->returnObject();
         return $rs;
     }
-
+    public function categoryExists($id){
+        if(strlen($id)==0){return false;}
+        return (bool)$this->database->query('SELECT id FROM `categories` WHERE id='.(int)$id);
+    }
+    public function getCategory($id){
+        $pId=(int)$id;
+        $r=$this->database->query('SELECT * FROM `categories` WHERE id='.$pId);
+       // echo $r->num_rows;
+        return $this->database->returnObject($r);
+    }
+    public function updateCategory($id,$name,$related){
+        $this->database->query('UPDATE `categories` SET name="'.$this->database->escape($name).'",related_to="'.$this->database->escape($related).'" WHERE id='.$id);
+        //echo $this->database->getError();
+    }
     /**
      * 
      * @return object
@@ -52,7 +65,12 @@ class categories_model {
         $this->database->query('SELECT id,name FROM profiles WHERE user_id=' . $id);
         return $this->database->returnObject();
     }
-
+    public function insertCategory($name,$related){
+       // echo "asdfasdf";
+        $this->database->query('INSERT INTO `categories` (name,related_to)
+            VALUES("'.$this->database->escape($name).'","'.$this->database->escape($related).'")');
+        echo $this->database->getError();
+    }
     public function getProfile($id) {
         $this->database->query('SELECT * FROM profiles WHERE id=' . $id);
         return $this->database->returnObject()[0];

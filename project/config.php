@@ -3,7 +3,7 @@
 $GLOBALS['config']['autoload_libraries']=array('database','hash','redirection');
 $GLOBALS['config']['autoload_controller']='redirectionController';
 $GLOBALS['config']['libraries']['database']['username']='root';
-$GLOBALS['config']['libraries']['database']['password']='123456';
+$GLOBALS['config']['libraries']['database']['password']='';
 $GLOBALS['config']['libraries']['database']['host']='localhost';
 $GLOBALS['config']['libraries']['database']['db']='breader';
 $GLOBALS['config']['libraries']['database']['autoconnect']=true;
@@ -17,5 +17,5 @@ $GLOBALS['config']['extra']['github']['project']='breader';
 $GLOBALS['config']['extra']['api']['token']='someapitoken';
 $GLOBALS['config']['extra']['lang']='en';
 $GLOBALS['config']['index']['enviroment']='development';
-define('SITE_PATH','http://local.breader.eu/');
+define('SITE_PATH','http://localhost/breader/public/');
 //remember to edit the .js file at public (stories.js), also home.js includes some of it.

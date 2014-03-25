@@ -45,5 +45,4 @@ $(function() {
         loadNew();
     });*/
     //Commented out because of glitchy social plugins
-
 });

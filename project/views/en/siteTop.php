@@ -24,7 +24,7 @@
         }
         ?>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-
+        <script src="js/common.js"></script>
     </head>
     <body>
         <div id="container">
@@ -60,6 +60,14 @@
                             <a href="stories/addFeed">Add your own RSS feed!</a><br>
 
                             <?php
+                            //var_dump($_SESSION);
+                            if($_SESSION['user'][0]['type']>0){
+                                ?>
+                                <h3>Administration</h3>
+                                <a href="admin/categoriesManagement">Manage Categories</a><br>
+                                <a href="admin/feedManagement">Manage Feeds</a>
+                                <?php
+                            }
                         }
                         ?>
                         <h2>Advert</h2>

@@ -16,6 +16,7 @@ class redirection {
         } else {
             header('Location:' . $link);
         }
+        die();
     }
 
     /**
@@ -41,6 +42,14 @@ class redirection {
         if (!isset($_SESSION['il'])) {
 
             $this->r($link, $appendSitePath);
+        }
+    }
+    public function redirectBack($fallback='redirectionController'){
+                if(isset($_SERVER['HTTP_REFERER'])){
+            $this->r($_SERVER['HTTP_REFERER'],false);
+        }
+        else{
+            $this->r($fallback);
         }
     }
 
