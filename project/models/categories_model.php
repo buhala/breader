@@ -15,6 +15,9 @@ class categories_model {
         $rs = $this->database->returnObject();
         return $rs;
     }
+    public function deleteCategory($id){
+        $r=$this->database->query('DELETE FROM `categories` WHERE id='.(int)$id);
+    }
     public function categoryExists($id){
         if(strlen($id)==0){return false;}
         return (bool)$this->database->query('SELECT id FROM `categories` WHERE id='.(int)$id);

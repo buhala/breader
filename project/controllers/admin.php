@@ -89,4 +89,9 @@ class admin{
 		$this->feeds_model->deleteSuggestedFeed($id);
 		$this->redirection->redirectBack();
 	}
+	public function deleteCategory($id){
+		$this->loadModel('categories_model');
+		$this->categories_model->deleteCategory($id);
+		$this->redirection->redirectBack();
+	}
 }

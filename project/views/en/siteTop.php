@@ -27,11 +27,19 @@
         <script src="js/common.js"></script>
     </head>
     <body>
-        <div id="container">
-            <div id="menu">
-                <div id='fakemenu'><a href=""><img src="img/logo.png" height="40" alt="bReader"></a><p id="menu-links"><a href=redirectionController" id="current">Home</a><a href="login/destroy_session">Logout</a></p></div>
+        <header id="main-header">
+            <div class="container">
+                <a href="<?= SITE_PATH; ?>" id="logo"><img src="img/logo.png" height="40" alt="bReader"></a>
+                <nav id="main-nav">
+                    <ul>
+                        <li><a href="redirectionController" class="current">Home</a></li>
+                        <li><a href="login/destroy_session">Logout</a></li>
+                    </ul>
+                </nav>
+                <div class="clear"></div>
             </div>
-
+        </header>
+        <div id="container">
             <div id="content">
                 <div id="page">
 

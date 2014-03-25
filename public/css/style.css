@@ -1,8 +1,8 @@
 body{
     font-size:10pt;
     background:white;
-   
     margin:0;
+    font-family:'Segoe UI','Helvetica','Arial',sans-serif;
 }
 .star{
     width:20px;
@@ -22,6 +22,58 @@ body{
     display:block;
     margin:0 auto;
 }
+
+.container {
+    width: 87.3%;
+    margin: 0 auto;
+}
+.clear {
+    clear: both;
+}
+
+header#main-header {
+    line-height: 100%;
+    margin:0;
+    background-color:black;
+    display:block;
+    color:#a2a2a2;
+    font-size: 17pt;
+    position: fixed;
+    width: 100%;
+}
+header#main-header #logo {
+    float: left;
+    display: block;
+    margin: 15px 0;
+}
+header#main-header #main-nav {
+float: right;
+}
+header#main-header #main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 22px 0;
+}
+header#main-header #main-nav ul li {
+    display: inline-block;
+}
+header#main-header #main-nav ul li a {
+    text-decoration: none;
+    margin-right:20px;
+}
+header#main-header #main-nav ul li:last-child a {
+    margin-right: 0;
+}
+header#main-header #main-nav ul li a, header#main-header #main-nav ul li a:link, header#main-header #main-nav ul li a:visited, header#main-header #main-nav ul li a:active {
+    color:#a2a2a2;
+}
+header#main-header #main-nav ul li a:hover{
+    color:#FFD6AD;
+}
+header#main-header #main-nav ul li a.current {
+    color:#ff7f00;
+}
+
 
 #container{
     
