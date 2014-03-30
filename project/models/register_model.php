@@ -32,7 +32,15 @@ class register_model {
                         $return['success'] = false;
                         $return['error'] = 'INVALID_MAIL';
                     } else {
-                        $return['success'] = true;
+                        $time=time()-1200;
+                        if($this->database->getRows('SELECT * FROM users WHERE register_ip="'.$_SERVER['REMOTE_ADDR'].'" AND register_time>'.$time)<1){ //Check if there are more than 10 accounts in the last 20 minutes from that IP 
+                            echo $this->database->getError();
+                            $return['success'] = true;
+                        }
+                        else{
+                            $return['success'] = false;
+                            $return['error'] = 'TOO_MANY_ACCOUNTS';
+                        }
                     }
             
                 }

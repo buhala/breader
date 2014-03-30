@@ -82,6 +82,9 @@ $(function() {
                 if (response.error == 'PASSWORD_MISMATCH') {
                     alert('Your passwords do not match!');
                 }
+                if(response.error == 'TOO_MANY_ACCOUNTS'){
+                    alert('Too many accounts have been created from your IP. Wait a bit and try again!')
+                }
             }
         };
         $.ajax(ajax_setup);
