@@ -33,7 +33,7 @@ class register_model {
                         $return['error'] = 'INVALID_MAIL';
                     } else {
                         $time=time()-1200;
-                        if($this->database->getRows('SELECT * FROM users WHERE register_ip="'.$_SERVER['REMOTE_ADDR'].'" AND register_time>'.$time)<1){ //Check if there are more than 10 accounts in the last 20 minutes from that IP 
+                        if($this->database->getRows('SELECT * FROM users WHERE register_ip="'.$_SERVER['REMOTE_ADDR'].'" AND register_time>'.$time)<10){ //Check if there are more than 10 accounts in the last 20 minutes from that IP 
                             echo $this->database->getError();
                             $return['success'] = true;
                         }
