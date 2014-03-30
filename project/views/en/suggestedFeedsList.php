@@ -9,5 +9,10 @@ foreach($data as $feed){
 	<tr><td style="width:100%"><?=$feed->url;?></td><td><?=$feed->cat_id;?></td><td><a href="admin/approveFeed/<?=$feed->id;?>"><img src="img/tick.png" style="height:20px;"></a></td><td><a class="delete" href="admin/deleteSuggestedFeed/<?=$feed->id?>"><img src="img/delete.png" style="height:20px;"></a></td></td></tr>
 	<?php
 }
+if(count($data)==0){
+	?>
+	<tr><td colspan="3" style="text-align:center">No feeds have been suggested</td></tr>
+	<?php
+}
 ?>
 </table>
