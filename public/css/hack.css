@@ -6,4 +6,66 @@ DO NOT TOUCH. AddThis has this weird glitch where it leaves a shit ton of space 
 */
 div.atclear{
     display:none;
+
+}
+/*
+Under 600px fallback to stationary bar at the top and move layout downwards
+*/
+@media all and (max-height:600px){
+	header#main-header{
+		position:absolute;
+}
+}
+@media all and (orientation:portrait) {
+header#main-header{
+	position:absolute;
+	margin-bottom:100%;
+}
+#leftbar,#rightbar{
+}
+#leftbar{
+	margin:0 auto;
+	width:100%;
+	border-bottom:1px solid #000;
+}
+#rightbar{
+	border:0;
+	padding:0;
+	margin-left:0;
+	width:100%;
+}
+.container{
+	width:95%;
+}
+.advert{
+	display:none;
+}
+#content,#page{
+	width:95%;
+}
+  #page {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    /* optional */
+    -webkit-box-align: start;
+    -moz-box-align: start;
+    -ms-flex-align: start;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+  }
+   #page #leftbar {
+    -webkit-box-ordinal-group: 2;
+    -moz-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    -webkit-order: 1;
+    order: 1;
+  }
 }

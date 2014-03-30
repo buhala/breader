@@ -1,5 +1,4 @@
 body{
-    font-size:10pt;
     background:white;
     margin:0;
     font-family:'Segoe UI','Helvetica','Arial',sans-serif;
@@ -124,7 +123,6 @@ header#main-header #main-nav ul li a.current {
     float:right;
 }
 #leftbar{
-    font-size: 12pt;
     padding:5px;
     width:24%;
     float:left;
