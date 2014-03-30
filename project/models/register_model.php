@@ -59,8 +59,8 @@ class register_model {
      * Inserts data into DB
      */
     public function doRegister($data) {
-        $this->database->query('INSERT INTO users(username,password)
-                                VALUES("' . $data['username'] . '","' . $data['password'] . '")');
+        $this->database->query('INSERT INTO users(username,password,register_time,register_ip)
+                                VALUES("' . $data['username'] . '","' . $data['password'] . '",now(),"'.$this->database->escape($_SERVER['REMOTE_ADDR']).'")');
         return true;
     }
 

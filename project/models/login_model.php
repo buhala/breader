@@ -41,6 +41,7 @@ class login_model {
     public function createSession() {
 
         $_SESSION['user'] = $this->database->returnArray();
+        $this->database->query('UPDATE users SET login_time=now() WHERE id='.$_SESSION['user'][0]['id']);
         $_SESSION['il'] = true;
     }
 
