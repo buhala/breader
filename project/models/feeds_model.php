@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Model for writing feeds
+ * Model for feeds
  */
 class feeds_model { 
 	use b_model;

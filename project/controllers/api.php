@@ -98,7 +98,9 @@ class api {
         }
         $this->loadView('JsonDisplay', $return);
     }
-
+    /**
+    * Handles logging in with a token.
+    **/
     public function tokenLogin() {
         $token = $_POST['token'];
         $this->loadModel('api_model');

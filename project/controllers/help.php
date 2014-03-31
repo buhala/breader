@@ -34,7 +34,9 @@ class help {
         $this->loadView('singleTopic', $data);
         $this->loadView('siteFooter');
     }
-
+    /**
+    * Sends mail to us.
+    **/
     public function submitRequest() {
 
         $this->loadView('success');

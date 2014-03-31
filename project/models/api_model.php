@@ -81,7 +81,9 @@ class api_model {
         $this->loadModel('login_model');
         $this->login_model->createSession();
     }
-
+    /**
+    * Registers a user based on a token
+    **/
     public function tokenRegister($email) {
         $data['username'] = $this->database->escape($email);
         $data['password'] = 'socialAccount';

@@ -46,5 +46,5 @@ try {
     restore_error_handler();
 } catch (Exception $e) {
     
-	//header('Location:' . SITE_PATH . 'errors1');
+	header('Location:' . SITE_PATH . 'errors');
 }

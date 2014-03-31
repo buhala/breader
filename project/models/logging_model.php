@@ -8,8 +8,8 @@ class logging_model {
 
     /**
      * 
-     * @param type $cat
-     * @param type $id
+     * @param int $cat
+     * @param int $id
      * Logs a visit
      */
     public function logVisit($cat, $id) {
@@ -20,13 +20,18 @@ class logging_model {
         }
         $this->database->query('UPDATE likings SET popularity=popularity+1 WHERE user_id=' . $id . ' AND cat_id=' . $cat);
     }
-
+    /**
+     * 
+     * @param str url
+     * @param int id
+     * Logs a click
+     */
     public function logClick($url, $id) {
         $this->database->query('INSERT INTO clicks (url,user_id,time)
             VALUES("' . $this->database->escape($url) . '",' . $id . ',' . time() . ')');
-        echo 'INSERT INTO clicks (url,user_id,time)
-            VALUES("' . $this->database->escape($url) . '",' . $id . ',' . time() . ')';
-        echo $this->database->getError();
+        /*echo 'INSERT INTO clicks (url,user_id,time)
+            VALUES("' . $this->database->escape($url) . '",' . $id . ',' . time() . ')';*/
+        //echo $this->database->getError();
     }
 
 }

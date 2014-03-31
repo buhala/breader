@@ -2,13 +2,18 @@
 
 class user  {
     use b_controller;
+    /**
+    *Shows the change details form
+    **/
     public function changeDetails() {
         $this->redirection->redirectIfNotLogged('login');
         $this->loadView('siteTop');
         $this->loadView('changeDetails');
         $this->loadView('siteFooter');
     }
-
+    /**
+    * Changes the password
+    **/
     public function doPassChange() {
         $this->loadView('siteTop');
         $this->loadModel('user_model');
@@ -29,7 +34,9 @@ class user  {
         }
         $this->loadView('siteFooter');
     }
-
+    /**
+    * Changes the email
+    **/
     public function doEmailChange() {
         $this->loadView('siteTop');
         $this->redirection->redirectIfNotLogged('login');

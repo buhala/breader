@@ -6,10 +6,6 @@
 class stories {
 
     use b_controller;
-
-    /**
-     * Shows a loading page before doing stuff -_-
-     */
     private $storiesCount = 20; //TODO:User based result
     private $recommendedStoriesCount = 5;
 

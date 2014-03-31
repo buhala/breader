@@ -5,7 +5,9 @@ include PROJECT_DIR . 'libs/swift/swift_required.php';
 class mailer {
 
     use b_library;
-
+    /**
+    * Sends mail.
+    **/
     public function sendMail($subject, $from, $to, $body) {
         $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl');
         $transport->setUsername('asfasdfasdf@gmail.com');

@@ -8,7 +8,9 @@
 class redirectionController {
 
     use b_controller;
-
+    /**
+    * Does the actual redirection
+    **/
     public function index() {
         $this->redirection->redirectIfNotLogged('login');
         $this->loadModel('redirection_model');

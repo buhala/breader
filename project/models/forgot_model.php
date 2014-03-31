@@ -10,20 +10,28 @@ class forgot_model {
 
     /**
      * 
-     * @param type $data
-     * @return type
+     * @param string $data
+     * @return array
      * Escapes the data
      */
     public function escapeData($data) {
         $return['username'] = $this->database->escape($data['username']); //For consistency's sake
         return $return;
     }
-
+    /**
+    * @param string key
+	* @return array
+	* Escapes the key
+    **/
     public function escapeKey($key) {
         $return['key'] = $this->database->escape(trim($key));
         return $return;
     }
-
+    /**
+	* @return array
+	* @param string key
+	* Checks if there already is an account.
+    **/
     public function checkKey($key) {
         $this->database->query('SELECT * FROM users WHERE `key`="' . $key['key'] . '" AND password!="socialAccount"');
         //  echo 'SELECT * FROM users WHERE `key`="' . $key['key'] . '" AND password!="socialAccount"';
@@ -35,7 +43,11 @@ class forgot_model {
         }
         return $return;
     }
-
+    /**
+    * @param array data
+    * @return array return
+    * Validates the data
+    **/
     public function validateData($data) {
         if (filter_var($data['username'], FILTER_VALIDATE_EMAIL) == false) {
             $return['success'] = false;
@@ -51,7 +63,10 @@ class forgot_model {
         }
         return $return;
     }
-
+    /**
+    * @param array data
+    * @return array return
+    **/
     public function doChange($data) {
         $key = $this->hash->h(rand());
         $this->database->query('UPDATE users SET `key`="' . $key . '" WHERE username="' . $data['username'] . '"');
@@ -61,7 +76,12 @@ class forgot_model {
         $return['key'] = $key;
         return $return;
     }
-
+    /**
+	* @param array passwords
+	* @param string key
+	* @return array return
+	* Does the final change.
+    **/
     public function changeFinal($passwords, $key) {
         //var_dump($passwords); var_dump($key);
         if ($passwords['newpass'] == $passwords['reppass']) {
